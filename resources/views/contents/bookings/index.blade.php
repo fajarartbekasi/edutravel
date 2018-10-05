@@ -3,14 +3,11 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-6 py-4">
-        
-            <a href="{{ route('plans.create') }}"class="btn btn-outline-primary">New Plan</a>
+        <div class="col-md-12 py-4 ">
             
-        </div>
-        <div class="col-md-6 py-4">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Atention Pleas!</strong> Enjoy your duty.
+                <strong>Atention Pleas!</strong> 
+                Order data will appear if payment has been made.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -23,9 +20,8 @@
                 <tr>
 
                     <th>No</th>
-                    <th>Services</th>
+                    <th>Name</th>
                     <th>Plan</th>
-                    <th>Price</th>
                     <th>Action</th>
                 
                 </tr>
@@ -35,18 +31,17 @@
                     <td>No</td>
                     <td>Services</td>
                     <td>Plan</td>
-                    <td>Price</td>
                     <td>
-                        <button type="submit" class="btn btn-outline-warning btn-sm">
-                            <i class="fa fa-edit"></i> Edit
-                        </button>
-                        <button type="submit" class="btn btn-outline-danger btn-sm">
-                            <i class="fa fa-trash"></i> Deleted
-                        </button>
+                        <a href="{{ route('users.show.booking') }}">
+                            <button type="submit" class="btn btn-outline-primary btn-sm">
+                                <i class="fa fa-search"></i> Show
+                            </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
 
 @endsection

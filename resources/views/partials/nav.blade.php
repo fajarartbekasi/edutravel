@@ -40,7 +40,7 @@
         
                     <i class="fa fa-envelope">
             
-                        <span class="badge badge-danger">11</span>
+                        <span class="badge badge-secondary">11</span>
 
                     </i>
                     Messages
@@ -53,7 +53,7 @@
                     
                     <i class="fa fa-bell">
         
-                        <span class=" badge badge-warning">11</span>
+                        <span class=" badge badge-secondary">11</span>
 
                     </i>
 
@@ -73,7 +73,7 @@
                     
                     <i class="fa fa-gear">
         
-                        <span class=" badge badge-success">11</span> 
+                        <span class=" badge badge-secondary">11</span> 
 
                     </i>
 
@@ -134,7 +134,7 @@
 
         </a>
 
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('users.booking') }}">
         
             Bookings
 

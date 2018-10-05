@@ -11,4 +11,8 @@ class PlanController extends Controller
     {
         return view('contents.plans.index');
     }
+    public function create()
+    {
+        return view('contents.plans.create');
+    }
 }
