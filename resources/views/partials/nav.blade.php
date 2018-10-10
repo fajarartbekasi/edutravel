@@ -140,7 +140,7 @@
 
         </a>
 
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('users.check-modules') }}">
         
             Modules
 

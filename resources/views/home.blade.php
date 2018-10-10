@@ -33,6 +33,7 @@
                               
                           </a>
                          4 min &nbsp;
+                          
                           <span class="fa fa-comment"></span>
                           1 comment &nbsp;
                           <span class="fa fa-reply"></span>
