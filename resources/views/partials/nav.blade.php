@@ -1,16 +1,20 @@
-<nav class="navbar navbar-icon-top navbar-expand-lg fixed-top navbar-dark bg-white">
+<nav class="navbar navbar-icon-top navbar-expand-lg fixed-top navbar-dark bg-white text-muted">
 
     <a class="navbar-brand mr-auto mr-lg-0 text-muted" href="#">
     
         EduTravels
         
     </a>
+    <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+    <!-- <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
     
         <span class="navbar-toggler-icon"></span>
     
-    </button>
+    </button> -->
+
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     
@@ -111,7 +115,7 @@
 
 </nav>
 
-<div class="nav-scroller bg-white shadow-sm">
+<div class="nav-scroller bg-white shadow-sm fixed-top">
 
     <nav class="nav nav-underline">
 

@@ -32,7 +32,7 @@
 
         <div class="row">
             <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
+            <div class="shadow p-3 mb-5 card mb-4 ">
                 <img class="card-img-top" src="{{ asset('img/modules/test.jpg')}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="text-warning">Step by step for learn english speak</h5>
@@ -55,7 +55,7 @@
             </div>
             </div>
             <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
+            <div class="shadow p-3 mb-5 card mb-4 ">
                 <img class="card-img-top" src="{{ asset('img/modules/test.jpg')}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="text-warning">Step by step for learn english speak</h5>
@@ -74,7 +74,7 @@
             </div>
             </div>
             <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
+            <div class="shadow p-3 mb-5 card mb-4 ">
                 <img class="card-img-top" src="{{ asset('img/modules/test.jpg')}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="text-warning">Step by step for learn english speak</h5>

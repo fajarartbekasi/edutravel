@@ -13,7 +13,7 @@
                         <img class="media-object rounded-circle" width="100" src="{{ asset('img/avatars/user.png') }}">
                         <br>
                         <br>
-                        <h4>Chaerul Fajar Subhi</h4>
+                        <h4 class="font-weight-bold">Chaerul Fajar Subhi</h4>
 
                         <span>
                             
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 offset-2 py-4">
+        <div class="shadow p-3 mb-5 bg-white rounded col-md-6 offset-2 py-4">
         
             <nav>
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">

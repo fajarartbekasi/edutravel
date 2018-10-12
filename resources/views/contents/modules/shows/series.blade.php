@@ -35,17 +35,22 @@
                 </button>
 
             </div>
+            <div class="col-md-12 py-4">
+                <div class="embed-responsive embed-responsive-21by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                </div>
+            </div>
 
         </div>
         <hr>
 
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <div class="col-md-6">
 
                     <h6 class="text-dark">2 Comments</h6>
                 </div>
-                <div class="bg-white rounded shadow-sm">
+                <div class="shadow p-3 mb-5 bg-white rounded ">
 
                     @include('partials.form.form')
 
@@ -127,34 +132,7 @@
                 
                 </div>
             </div>
-            <div class="col-md-5">
-                <h6 class="text-muted">Step by step for learn english speak</h6>
-                <ol>
-                    <li class="text-primary">Search partner to speaking
-                        &nbsp; 
-                        <i class="fa fa-eye"></i>  
-                        &nbsp;   
-                        
-                        6:29
-                    </li>
-                    <hr>
-                    <li class="text-primary">Search partner to speaking
-                        &nbsp; 
-                        <i class="fa fa-eye"></i>  
-                        &nbsp;   
-                        
-                        6:29
-                    </li>
-                    <hr>
-                    <li class="text-primary">Search partner to speaking
-                        &nbsp; 
-                        <i class="fa fa-eye"></i>  
-                        &nbsp;   
-                        
-                        6:29
-                    </li>
-                </ol>
-            </div>
+           
         </div>
     </div>
 

@@ -5,24 +5,29 @@
                 <img class="avatar rounded-circle" src="{{ asset('img/avatars/user.png') }}">
 
             </div>
-            <div class="col-sm-5 content">
-                <div class="header text-muted">
-                Chaerul Fajar Subhi
-                </div>
-                <div class="description text-muted">
-                fajarbekasieditting@gmail.com
-                </div>
-               
-                <div class="actions">
-                    
-                    <a href="" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Update Profile</a>
-                    
-                </div>
+            <div class="media-content py-4 col-sm-10 ">
                 
-            </div>
-            <div class="col-sm-5 user-follow">
                 <div class="row">
                     
+                    <div class="col-sm-4">
+                        <div class="header text-muted">
+                            <p class="font-weight-bold">
+                                Chaerul Fajar Subhi
+                            </p> 
+                            
+                        </div>
+                        <div class="description text-muted">
+                            <p class="text-capitalize">
+                                fajarbekasieditting@gmail.com
+                            </p> 
+                        </div>
+                    
+                        <div class="actions">
+                            
+                            <a href="" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Update Profile</a>
+                            
+                        </div>    
+                    </div>
                     <div class="col-sm-4">
                         <a class="fa fa-birthday-cake counter text-muted"></a>
                         <a href="" class="text-muted">2018-11-11</a>

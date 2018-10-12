@@ -9,7 +9,7 @@
 
     <div class="col-md-4 py-4 text-center">
 
-        <i class="fa fa-file fa-4x"></i>
+        <i class="fa fa-file text-muted fa-4x"></i>
             <br>
         File
     </div>
