@@ -13,6 +13,8 @@
           <div class="row">
             <div class="col-md-12">
               @include('contents.discussions.index')
+
+              {{$threads->links()}}
             </div>
           </div>
         </div>

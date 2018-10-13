@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
+
+Route::get('/threads/{thread}','Thread\ThreadController@show');
 
 Auth::routes();
 
@@ -22,10 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'plans'], function(){
     
-    Route::get('/','Plan\PlanController@index')->name('plans.index');
+    Route::get('/plans','Plan\PlanController@index')->name('plans.index');
     Route::get('/create','Plan\PlanController@create')->name('plans.create');
 
 });
+
 
 Route::group(['prefix'=>'users'], function(){
 
