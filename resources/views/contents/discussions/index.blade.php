@@ -16,9 +16,8 @@
                 <div class="media-conversation-replies">
                     <a href="">
                         
-                        
                     </a>
-                    4 min &nbsp;
+                    {{ $thread->created_at->diffForHumans() }} &nbsp;
                     
                     <span class="fa fa-comment"></span>
                     1 comment &nbsp;

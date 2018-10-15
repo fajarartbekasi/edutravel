@@ -1,8 +1,10 @@
 <nav class="navbar navbar-icon-top navbar-expand-lg fixed-top navbar-dark bg-white text-muted">
 
     <a class="navbar-brand mr-auto mr-lg-0 text-muted" href="#">
-    
-        EduTravels
+        <strong>
+            <img class="media-object rounded-circle" width="30" height="30" src="{{ asset('img/avatars/icon.svg') }}">
+            EduTravels
+        </strong>
         
     </a>
     <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="offcanvas">
@@ -21,17 +23,17 @@
         <div class="col-md-8 col-md-offset-3">
 
             <form action="" class="search-form">
+
+                    <div class="form-group has-feedback">
         
-                <div class="form-group has-feedback">
-        
-                    <label for="search" class="sr-only">Search</label>
-        
-                    <span class="fa fa-search form-control-feedback"></span>
-        
-                    <input type="text" class="form-control" name="search" id="search" placeholder="search">
-        
-                </div>
-        
+                        <label for="search" class="sr-only">Search</label>
+            
+                        <span class="fa fa-search form-control-feedback"></span>
+            
+                        <input type="text" class="form-control" name="search" id="search" placeholder="search">
+            
+                    </div>
+
             </form>
         
         </div>
