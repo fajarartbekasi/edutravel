@@ -1,4 +1,7 @@
-<p align="center">EduTravel</p>
+<p align="center"> 
+EduTravel 
+    <img src="{{asset(''img/avatars/icon.svg)}}">
+</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
