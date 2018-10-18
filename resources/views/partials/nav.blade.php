@@ -89,23 +89,12 @@
 
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                  
-                    <a class="dropdown-item" href="#">
-                    
-                        Action
-                        
+                    <a href="{{ route('logout') }}" class="dropdown-item fa fa-sign-out text-muted" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Sign Out
                     </a>
-                 
-                    <a class="dropdown-item" href="#">
-                    
-                        Another action
-                        
-                    </a>
-                 
-                    <a class="dropdown-item" href="#">
-                        
-                        Something else here
-                    
-                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 
                 </div>
             
@@ -152,13 +141,13 @@
 
         </a>
 
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="">
         
             Payments
 
         </a>
 
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/threads">
         
             Discussions
 

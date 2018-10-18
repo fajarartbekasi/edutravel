@@ -32,27 +32,27 @@
 
         <div class="row">
             <div class="col-md-4">
-            <div class="shadow p-3 mb-5 card mb-4 ">
-                <img class="card-img-top" src="{{ asset('img/modules/test.jpg')}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="text-warning">Step by step for learn english speak</h5>
-                    <p class="card-text">
-                        <span class="badge badge-primary">Step 1</span>
-                        11 Lessons | Beginner
-                    
-                    </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <a href="{{ route('users.series.Step-by-step-for-learn-english-speak') }}">
-                            
-                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <div class="shadow p-3 mb-5 card mb-4 ">
+                    <img class="card-img-top" src="{{ asset('img/modules/test.jpg')}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="text-warning">Step by step for learn english speak</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Step 1</span>
+                            11 Lessons | Beginner
+                        
+                        </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{{ route('users.series.Step-by-step-for-learn-english-speak') }}">
+                                
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
 
-                        </a>
+                            </a>
+                        </div>
+                        <small class="text-muted">9 mins</small>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
             <div class="col-md-4">
             <div class="shadow p-3 mb-5 card mb-4 ">

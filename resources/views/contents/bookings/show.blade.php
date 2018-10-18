@@ -13,13 +13,16 @@
                         <img class="media-object rounded-circle" width="100" src="{{ asset('img/avatars/user.png') }}">
                         <br>
                         <br>
-                        <h4 class="font-weight-bold">Chaerul Fajar Subhi</h4>
+                        <h1 class="font-weight-bold">Chaerul Fajar Subhi</h1>
 
-                        <span>
+                        <span class="text-primary" >
                             
                             <i class="fa fa-user" style="margin-right: 10px"></i>
                             
-                            fajarartbekasieditting@gmail.com
+                            <strong>
+
+                                fajarartbekasieditting@gmail.com
+                            </strong>
                             
                         </span>
                         <br/>

@@ -5,9 +5,32 @@ namespace App\Models\Thread;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
-{
-   public function path()
+{   
+
+    protected $guarded = [];
+
+   
+   public function creator()
    {
-       return '/threads/'. $this->id;
+       return $this->belongsTo(\App\User::class, 'user_id');
    }
+   public function replies()
+   {    
+       return $this->hasMany(\App\Models\Reply\Reply::class);
+
+   }
+
+    public function addReply($reply)
+    {
+        $this->replies()->create($reply);
+    }
+
+    public function path()
+    {
+        return "/threads/{$this->channel->slug}/{$this->id}";
+    }
+    public function channel()
+    {
+        return $this->belongsTo(\App\Channel::class, 'channel_id');
+    }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Models\Thread\Thread;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,6 +15,7 @@ class HomeController extends Controller
     // public function __construct()
     // {
     //     $this->middleware('auth');
+        
     // }
 
     /**
@@ -25,9 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        $threads = Thread::latest()->simplePaginate(5);
-
-        return view('home',compact('threads'));
+        return view('home');
     }
 }

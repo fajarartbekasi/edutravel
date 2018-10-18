@@ -27,19 +27,33 @@ $factory->define(App\Models\Thread\Thread::class, function (Faker $faker) {
         'user_id'   => function(){
             return factory('App\User')->create()->id;
         },
+        'channel_id' => function () {
+            return factory('App\Channel')->create()->id;
+        },
         'title'     => $faker->sentence,
         'body'      => $faker->paragraph
     ];
 });
 
+$factory->define(App\Channel::class, function ($faker) {
+    
+    $name = $faker->word;
+
+    return [
+        'name'  => $name,
+        'slug'  => $name
+
+    ];
+});
+
 $factory->define(App\Models\Reply\Reply::class, function (Faker $faker) {
     return [
-        'thread_id'   => function(){
+        'thread_id' => function () {
             return factory('App\Models\Thread\Thread')->create()->id;
         },
-        'user_id'   => function(){
+        'user_id' => function () {
             return factory('App\User')->create()->id;
         },
-        'body'      => $faker->paragraph
+        'body' => $faker->paragraph
     ];
 });

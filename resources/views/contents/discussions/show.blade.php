@@ -6,8 +6,8 @@
     <h1 class="font-weight-bold"> {{ $thread->title }}</h1>
         <p>
             <strong class="text-muted">
-                <span class="text-muted">Published 5 months ago</span>
-                by <a href="">Chaerul Fajar Subhi</a>
+                <span class="text-muted">Published {{ $thread->created_at->diffForHumans() }}</span>
+                by <a href="">{{ $thread->creator->name }}</a>
             </strong>
         </p>
         <div class="row">
@@ -43,18 +43,20 @@
             <div class="col-md-12 ">
                 <div class="media">
                     <div class="media-body ">  
+
+                        @foreach($thread->replies as $replies )
                         <div class="discuss-body">
                             <p>
                                 <img class="media-object rounded-circle" width="50" src="{{ asset('img/avatars/user.png') }}">
                                 <a href="http://">
                                     <strong>
-                                        Tayllor Otwell
+                                        {{ $replies->owner->name }}
                                     </strong>
                                     
                                 </a>
                                 
                                 <strong class="text-muted">
-                                    <span class="text-muted">Published 5 months ago</span>
+                                    <span class="text-muted">Published {{ $replies->created_at->diffForHumans() }} ago</span>
                                 </strong>
                                 
                             </p>
@@ -68,56 +70,32 @@
                             <div class="col-md-10 float-left">
                                
                                     <p class="text-mutes">
-                                        Hi, I have two tables that has one to one relationship, when I try to access data from 2nd table, I get the "TypeError: Cannot read property '...
+                                       {{ $replies->body }}
                                     </p>
                             </div>
                     
                         </div>
 
                         <hr>
-                        <div class="discuss-body">
-                            <p>
-                                <img class="media-object rounded-circle" width="50" src="{{ asset('img/avatars/user.png') }}">
-                                <a href="http://">
-                                    <strong>
-                                        Tayllor Otwell
-                                    </strong>
-                                    
-                                </a>
-                                
-                                <strong class="text-muted">
-                                    <span class="text-muted">Published 5 months ago</span>
-                                </strong>
-                                
-                            </p>
-                            <div class="float-left">
+                        @endforeach
 
-                                <span class="fa fa-thumbs-up fa fa-2x"></span>
-                                <strong>12</strong>
-                                
-                            </div>
-                            
-                            <div class="col-md-10 float-left">
-                               
-                                    <p class="text-muted">
-                                        Hi, I have two tables that has one to one relationship, when I try to access data from 2nd table, I get the "TypeError: Cannot read property '...
-                                    </p>
-                            </div>
-                    
-                        </div>
-                        
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="You all will listen to answe....">
+                        @if(Auth()->check())
+                            <form action="{{$thread->path() . '/replies'}}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea name="body" id="" cols="30" rows="10" class="form-control" placeholder="You all will listen to answer....">
 
-                                </textarea>
-                            </div>
-                            <div class="float-right">
-                                <button type="submit" class="btn btn-outline-primary">
-                                    Post Your Reply
-                                </button>
-                            </div>
-                        </form>
+                                    </textarea>
+                                </div>
+                                <div class="float-right">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        Post Your Reply
+                                    </button>
+                                </div>
+                            </form>
+                        @else
+                        <p class="text-center" > <a href="{{ route('login') }}">Please sign in</a>to participate in this discussion.</p>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -1,34 +1,35 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Models\Thread\Thread;
 
-Route::get('/', 'HomeController@index');
 
-Route::get('/threads/{thread}','Thread\ThreadController@show');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+
+Route::get('threads', 'Thread\ThreadController@index');
+
+Route::post('threads', 'Thread\ThreadController@store');
+
+Route::get('threads/{channel}/{thread}', 'Thread\ThreadController@show');
+
+Route::post('/threads/{channel}/{thread}/replies', 'Reply\ReplyController@store');
 
 
 Route::group(['prefix'=>'plans'], function(){
     
     Route::get('/plans','Plan\PlanController@index')->name('plans.index');
     Route::get('/create','Plan\PlanController@create')->name('plans.create');
-
+    
 });
 
 
 Route::group(['prefix'=>'users'], function(){
+
 
     Route::get('/booking', 'Booking\BookingController@index')->name('users.booking');
     Route::get('/show-booking', 'Booking\BookingController@show')->name('users.show.booking');

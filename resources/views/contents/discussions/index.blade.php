@@ -1,34 +1,27 @@
-@foreach($threads as $thread)
-    <div class="media my-3">
-        <div class="media-left mr-3">
-            <a href="">
-                <img class="media-object rounded-circle" width="50" src="{{ asset('img/avatars/user.png') }}">
-            </a>
-        </div>
-        <div class="media-body">
-            <h5 class="media-heading">
-                <a href="{{ $thread->path() }}">
-                   {{ $thread->title }}
-                </a>
-            
-            </h5>
-            <div class="media-conversation-meta">
-                <div class="media-conversation-replies">
-                    <a href="">
-                        
-                    </a>
-                    {{ $thread->created_at->diffForHumans() }} &nbsp;
-                    
-                    <span class="fa fa-comment"></span>
-                    1 comment &nbsp;
-                    <span class="fa fa-reply"></span>
-                    1 Reply
-                </div>
+@extends('layouts.app')
+
+@section('content')
+
+  @include('partials.info.profile')
+
+      <div class="shadow p-3 mb-5 bg-white rounded ">
+        <!-- discussion -->
+        <div class="discussion container">
+          <div class="row">
+            <div class="col-md-12">
+
+                @include('contents.discussions._body')
+ 
             </div>
-            Chaerul Fajar Subhi 
-            <p class="text-muted">
-            {{ $thread->body }}
-            </p>
+          </div>
         </div>
-    </div>
-@endforeach
+         <!-- end discussion -->
+         @if(Auth()->check())
+            @include('partials.form.form')
+        @else
+             <p class="text-center" > <a href="{{ route('login') }}">Please sign in</a>to participate in this discussion.</p>
+        @endif
+
+      </div>
+
+@endsection
