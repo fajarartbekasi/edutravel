@@ -13,10 +13,21 @@ class ParticipateInThreadTest extends TestCase
     /** @test */
     function unauthenticated_user_may_not_add_replies()
     {
+        $this->withExceptionHandling();
+        
+        $thread = create('App\Models\Thread\Thread');
 
-        $this->withExceptionHandling()
-             ->post('/threads/some-channel/1/replies', [])
-             ->assertRedirect('/login');
+        $reply = make('App\Models\Reply\Reply');
+
+        // dd($thread->path() . '/replies', $reply->toArray());
+
+        $this->post($thread->path() . '/replies', $reply->toArray())
+            ->assertRedirect('/login');
+
+
+        // $this->withExceptionHandling()
+        //     ->post('/threads/some/1/replies', [])
+        //     ->assertRedirect('/login');
         
     }
     /** @test */

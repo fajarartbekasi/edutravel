@@ -13,11 +13,11 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('threads', 'Thread\ThreadController@index');
 
-Route::post('threads', 'Thread\ThreadController@store');
-
 Route::get('threads/{channel}/{thread}', 'Thread\ThreadController@show');
 
-Route::post('/threads/{channel}/{thread}/replies', 'Reply\ReplyController@store');
+Route::post('threads', 'Thread\ThreadController@store');
+
+Route::post('threads/{channel}/{thread}/replies', 'Reply\ReplyController@store');
 
 
 Route::group(['prefix'=>'plans'], function(){

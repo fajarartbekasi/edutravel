@@ -80,7 +80,7 @@
                         @endforeach
 
                         @if(Auth()->check())
-                            <form action="{{$thread->path() . '/replies'}}" method="post">
+                            <form action="{{$thread->path().'/replies'}}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <textarea name="body" id="" cols="30" rows="10" class="form-control" placeholder="You all will listen to answer....">

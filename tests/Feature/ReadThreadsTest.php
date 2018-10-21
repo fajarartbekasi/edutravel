@@ -31,7 +31,7 @@ class ReadThreadsTest extends TestCase
     function a_user_can_read_a_single_thread()
     {
 
-        $this->get('/threads/'. $this->thread->id)
+        $this->get('threads/some/'. $this->thread->id)
              ->assertSee($this->thread->title);
         
         
@@ -43,8 +43,8 @@ class ReadThreadsTest extends TestCase
 
         $reply = factory('App\Models\Reply\Reply')
                  ->create(['thread_id' => $this->thread->id]);
-
-            $this->get('/threads/' . $this->thread->id)
+            
+                 $this->get('threads/some/' . $this->thread->id)
                  ->assertSee($reply->body);
     }
 }
