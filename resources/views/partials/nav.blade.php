@@ -11,15 +11,36 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-    
-        <span class="navbar-toggler-icon"></span>
-    
-    </button> -->
-
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-    
+        <ul class="navbar-nav mr-auto">
+        
+            
+            
+            
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle text-muted" href="https://example.com" 
+                    id="dropdown01" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">
+                
+                    Channels
+                
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    @foreach(App\Channel::all() as $channel)
+                        <a href="/threads/{{ $channel->slug }}" class="dropdown-item fa fa-sign-out text-muted">
+                            {{ $channel->name }}
+                        </a>
+                    @endforeach
+                </div>
+            
+            </li>
+        
+        </ul>
         <div class="col-md-8 col-md-offset-3">
 
             <form action="" class="search-form">
@@ -153,7 +174,9 @@
 
         </a>
         
+        
          
     </nav>
+    
 
 </div>

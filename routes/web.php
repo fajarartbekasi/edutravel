@@ -13,6 +13,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('threads', 'Thread\ThreadController@index');
 
+Route::get('threads/{channel}', 'Thread\ThreadController@index');
+
 Route::get('threads/{channel}/{thread}', 'Thread\ThreadController@show');
 
 Route::post('threads', 'Thread\ThreadController@store');
