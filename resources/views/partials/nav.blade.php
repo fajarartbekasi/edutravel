@@ -15,7 +15,31 @@
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
         
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle text-muted" href="https://example.com" 
+                    id="dropdown01" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">
+                
+                    Browse
+                
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a href="/threads" class="dropdown-item fa fa-sign-out text-muted">
+                            All Threads
+                        </a>
+                        @if(Auth()->check())
+                            <a href="/threads?by={{ auth()->user()->name }}" class="dropdown-item fa fa-sign-out text-muted">
+                                My Threads
+                            </a>
+                        @endif
+                  
+                </div>
             
+            </li>
             
             
             <li class="nav-item dropdown">
@@ -61,7 +85,7 @@
     
         <ul class="navbar-nav mr-auto">
         
-             <li class="nav-item active">
+             <!-- <li class="nav-item active">
         
                 <a class="nav-link text-muted" href="#">
         
@@ -88,7 +112,7 @@
                     
                 </a>
         
-            </li>
+            </li> -->
             
             <li class="nav-item dropdown">
 
