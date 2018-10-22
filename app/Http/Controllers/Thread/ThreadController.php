@@ -8,6 +8,7 @@ use App\Models\Thread\Thread;
 use App\Models\Reply\Reply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Filters\ThreadFilters;
 
 class ThreadController extends Controller
 {
@@ -18,28 +19,16 @@ class ThreadController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Channel $Channel
+     * 
+     * @param ThreadFilters $filters
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function index(channel $channel)
+    public function index(Channel $channel, ThreadFilters $filters)
     {
-        if ($channel->exists) {
-
-            $threads = $channel->threads()->latest();
-
-        }else{
-
-            $threads = Thread::latest();
-        }
-
-        if ($username = request('by')) {
-            
-            $user = User::where('name', $username)->firstOrFail();
-
-            $threads->where('user_id', $user->id);
-
-        }
-
-        $threads = $threads->get();
+        
+        $threads = $this->getThreads($channel, $filters);
 
         return view('contents.discussions.index',compact('threads'));
 
@@ -129,4 +118,18 @@ class ThreadController extends Controller
     {
         //
     }
+    
+    protected function getThreads(Channel $channel, ThreadFilters $filters)
+    {
+        $threads = Thread::latest()->filter($filters);
+
+        if ($channel->exists) {
+
+            $threads->where('channel_id', $channel->id);
+
+        }
+
+       return $threads->get();
+    }
+
 }
