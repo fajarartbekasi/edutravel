@@ -2,13 +2,19 @@
 
 @section('content')
 
-  @include('partials.info.profile')
 
       <div class="shadow p-3 mb-5 bg-white rounded ">
         <!-- discussion -->
         <div class="discussion container">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4 order-md-2 mb-4">
+
+                @include('contents.discussions.blade._sidebarFilter')
+
+                @include('contents.discussions.blade._sidebarChannel')            
+
+            </div>
+            <div class="col-md-8 order-md-1">
 
                 @include('contents.discussions._body')
  

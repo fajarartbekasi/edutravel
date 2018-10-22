@@ -6,29 +6,36 @@
             </a>
         </div>
         <div class="media-body">
-            <h5 class="media-heading">
+            <strong class="media-heading">
                 <a href="{{ $thread->path() }}">
                    {{ $thread->title }}
                 </a>
             
-            </h5>
-            <div class="media-conversation-meta">
-                <div class="media-conversation-replies">
-                    <a href="">
-                        
-                    </a>
-                    {{ $thread->created_at->diffForHumans() }} &nbsp;
-                    
-                    <span class="fa fa-comment"></span>
-                    1 comment &nbsp;
-                    <span class="fa fa-reply"></span>
-                    1 Reply
-                </div>
-            </div>
-            {{ $thread->creator->name }}
-            <p class="text-muted">
-            {{ $thread->body }}
+            </strong>
+            <p>
+                <strong class="text-muted">
+                    <a href="" class="font-weight-bold"> {{ $thread->channel->slug }} </a>
+                    <span class="text-muted">. Published {{ $thread->created_at->diffForHumans() }}</span>
+                    by <a href="" class="font-weight-bold">{{ $thread->creator->name }}</a>
+                </strong>
+                
             </p>
+            
+            <div class="float-left text-muted">
+
+                <span class="fa fa-reply fa fa-2x"></span>
+                <strong>
+                     {{ $thread->replies->count() }}
+                </strong>
+                
+            </div>
+            
+            <div class="col-md-10 float-left text-muted">
+            
+                    <p class="text-mutes">
+                    {{ $thread->body }}
+                    </p>
+            </div>
         </div>
     </div>
 @endforeach

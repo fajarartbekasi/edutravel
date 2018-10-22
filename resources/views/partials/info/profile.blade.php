@@ -9,33 +9,22 @@
                 
                 <div class="row">
                     
-                    <div class="col-sm-4">
+                    <div class="col-sm-12">
                         <div class="header text-muted">
-                            <p class="font-weight-bold">
-                                Chaerul Fajar Subhi
-                            </p> 
-                            
+                            <div class="float-left">
+
+                                <h3 class="font-weight-bold">
+                                    Chaerul Fajar Subhi
+                                </h3> 
+                            </div>
+                            <div class="float-right text-right">
+                                <H3>Experience</H3>
+                                <H2 class="font-weight-bold">830</H2>
+                                <H5 class="font-weight-bold">0 BEST REPLY AWARDS</H5>
+                            </div>
                         </div>
-                        <div class="description text-muted">
-                            <p class="text-capitalize">
-                                fajarbekasieditting@gmail.com
-                            </p> 
-                        </div>
+                    </div>
                     
-                        <div class="actions">
-                            
-                            <a href="" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Update Profile</a>
-                            
-                        </div>    
-                    </div>
-                    <div class="col-sm-4">
-                        <a class="fa fa-birthday-cake counter text-muted"></a>
-                        <a href="" class="text-muted">2018-11-11</a>
-                    </div>
-                    <div class="col-sm-4">
-                        <a href="" class="fa fa-sign-in counter text-muted"></a>
-                        <a href="" class="text-muted">2018-11-11</a>
-                    </div>
                 </div>
             </div>
             <div class="collapse mt-3" id="services">
@@ -50,5 +39,29 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class="col-md-3">
+                <p class="text-muted text-center">
+                    Member Since 7 Months Ago
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p class="text-muted text-center">
+                    0 Lessons Completed
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p class="text-muted text-center">
+                    0 Favorite
+                </p>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-outline-info btn-sm  btn-block">Edit Profile</button>
+            </div>
+        </div>
+        
+        @include('contents.blade.index.timeline')
+        
     </div>
 </div>
+
