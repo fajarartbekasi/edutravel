@@ -30,5 +30,17 @@
         
     
     </li>
+
+    <li class="list-group-item d-flex justify-content-between lh-condensed">
+
+        <h5>
+            <span class="fa fa-circle text-muted" > 
+                <a href="/threads?popular=1" class="text-muted">
+                    Popular Threads
+                </a> 
+            </span>
+        </h5>
+    
+    </li>
     
 </ul>

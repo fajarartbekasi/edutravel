@@ -39,5 +39,3 @@
         </div>
     </div>
 @endforeach
-
-{{ $threads->links() }}
