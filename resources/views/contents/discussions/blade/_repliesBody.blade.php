@@ -3,19 +3,19 @@
         <div class="media-body ">  
             <div class="row">
                 <div class="col-md-10 ">
-                    @foreach($thread->replies as $replies )
+                    @foreach($replies as $reply )
                     <div class="discuss-body">
                         <img class="media-object rounded-circle" width="50" src="{{ asset('img/avatars/user.png') }}">
                         <p>
                             <a href="http://">
                                 <strong>
-                                    {{ $replies->owner->name }}
+                                    {{ $reply->owner->name }}
                                 </strong>
                                 
                             </a>
                             
                             <strong class="text-muted">
-                                <span class="text-muted">Published {{ $replies->created_at->diffForHumans() }}</span>
+                                <span class="text-muted">Published {{ $reply->created_at->diffForHumans() }}</span>
                             </strong>
                             
                         </p>
@@ -29,7 +29,7 @@
                         <div class="col-md-10 float-left">
                         
                                 <p class="text-mutes">
-                                {{ $replies->body }}
+                                {{ $reply->body }}
                                 </p>
                         </div>
                 
@@ -37,6 +37,8 @@
                     <hr>
                 
                     @endforeach
+
+                    {{ $replies->links() }}
 
                     @if(Auth()->check())
                         <form action="{{$thread->path().'/replies'}}" method="post">

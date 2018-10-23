@@ -25,7 +25,7 @@
 
                 <span class="fa fa-reply fa fa-2x"></span>
                 <strong>
-                     {{ $thread->replies->count() }}
+                     {{ $thread->replies_count }}
                 </strong>
                 
             </div>
@@ -39,3 +39,5 @@
         </div>
     </div>
 @endforeach
+
+{{ $threads->links() }}
