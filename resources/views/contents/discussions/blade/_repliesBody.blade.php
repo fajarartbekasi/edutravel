@@ -12,7 +12,7 @@
                                  <button type="submit" class="btn btn-outline-primary btn-sm" {{ $reply->isFavorited() ? 'disabled' : ''}}>
 
                                      <span class="fa fa-thumbs-up fa fa-1x "></span>
-                                     <strong>{{ $reply->favorites()->count() }} {{ str_plural('Favorite', $reply->favorites()->count() ) }}</strong>
+                                     <strong>{{ $reply->favorites_count }} {{ str_plural('Favorite', $reply->favorites_count ) }}</strong>
                                  </button>
                                  
                             </form>
