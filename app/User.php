@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    use FavoriteTable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +21,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+    protected $with = ['favorites'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -31,10 +35,15 @@ class User extends Authenticatable
 
     public function threads()
     {
-        return $this->hasMany(\App\Models\Thread\Thread::class);
+        return $this->hasMany(\App\Models\Thread\Thread::class)->latest();
     }
     public function replies()
     {
         return $this->hasMany(\App\Models\Reply\Reply::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 }

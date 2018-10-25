@@ -14,7 +14,7 @@
                             <div class="float-left">
 
                                 <h3 class="font-weight-bold">
-                                    Chaerul Fajar Subhi
+                                    {{ $profileUser->name }}
                                 </h3> 
                             </div>
                             <div class="float-right text-right">
@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-md-3">
                 <p class="text-muted text-center">
-                    Member Since 7 Months Ago
+                    {{ $profileUser->created_at->diffForHumans() }}
                 </p>
             </div>
             <div class="col-md-3">
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-3">
                 <p class="text-muted text-center">
-                    0 Favorite
+                    {{ $profileUser->favorites_count }} {{ str_plural('Favorite', $profileUser->favorites_count) }}
                 </p>
             </div>
             <div class="col-md-3">

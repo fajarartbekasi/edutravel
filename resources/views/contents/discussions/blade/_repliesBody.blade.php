@@ -20,7 +20,7 @@
                             
                         </div>
                         <p>
-                            <a href="http://">
+                            <a href="/profiles/{{ $reply->owner->name }}">
                                 <strong>
                                     {{ $reply->owner->name }}
                                 </strong>

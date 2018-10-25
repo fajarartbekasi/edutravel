@@ -16,7 +16,7 @@
                 <strong class="text-muted">
                     <a href="" class="font-weight-bold"> {{ $thread->channel->slug }} </a>
                     <span class="text-muted">. Published {{ $thread->created_at->diffForHumans() }}</span>
-                    by <a href="" class="font-weight-bold">{{ $thread->creator->name }}</a>
+                    by <a href="/profiles/{{ $thread->creator->name }}" class="font-weight-bold">{{ $thread->creator->name }}</a>
                 </strong>
                 
             </p>
