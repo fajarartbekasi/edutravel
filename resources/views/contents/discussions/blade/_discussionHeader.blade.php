@@ -1,8 +1,17 @@
 <h1 class="font-weight-bold"> {{ $thread->title }}</h1>
+@if (Auth()->check())
+    <form action="{{ $thread->path() }}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <button type="submit" class="btn btn-outline-danger btn-sm float-right">
+            <span class="fa fa-trash"> This is a Spam</span>
+        </button>
+    </form>
+@endif
 <p>
     <strong class="text-muted">
         <span class="text-muted">Published {{ $thread->created_at->diffForHumans() }}</span>
-        by <a href="">{{ $thread->creator->name }}</a>
+        by <a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a>
     </strong>
     
 </p>
@@ -18,12 +27,8 @@
 <a href="http://" class="text-muted" title="Want to favorite this conversation ?">
     <span class="fa fa-star"></span>
 </a>
-&nbsp;
-<a href="http://" class="text-muted" title="Is this conversation full of spam? Sheesh - people, right?">
-    <span class="text-muted">
-        <img class="media-object rounded-circle" width="30" height="30" src="{{ asset('img/avatars/iconpasta.svg') }}">
-    </span>
-</a>
+
+
 
 <p class="text-muted ">
         

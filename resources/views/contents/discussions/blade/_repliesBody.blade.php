@@ -20,7 +20,7 @@
                             
                         </div>
                         <p>
-                            <a href="/profiles/{{ $reply->owner->name }}">
+                            <a href="{{ route('profile', $reply->owner) }}">
                                 <strong>
                                     {{ $reply->owner->name }}
                                 </strong>
