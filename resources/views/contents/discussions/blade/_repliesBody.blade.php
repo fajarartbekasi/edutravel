@@ -2,10 +2,23 @@
     <div class="media">
         <div class="media-body ">  
             <div class="row">
-                <div class="col-md-10 ">
+                <div class="col-md-12">
                     @foreach($replies as $reply )
                     <div class="discuss-body">
-                        <img class="media-object rounded-circle" width="50" src="{{ asset('img/avatars/user.png') }}">
+                        <img class="media-object rounded-circle" width="30" src="{{ asset('img/avatars/user.png') }}">
+                        <div class="float-right">
+                            <form action="/replies/{{ $reply->id }}/favorites" method="POST">
+                                 @csrf
+                                 <button type="submit" class="btn btn-outline-primary btn-sm" {{ $reply->isFavorited() ? 'disabled' : ''}}>
+
+                                     <span class="fa fa-thumbs-up fa fa-1x "></span>
+                                     <strong>{{ $reply->favorites()->count() }} {{ str_plural('Favorite', $reply->favorites()->count() ) }}</strong>
+                                 </button>
+                                 
+                            </form>
+                            
+                            
+                        </div>
                         <p>
                             <a href="http://">
                                 <strong>
@@ -19,26 +32,19 @@
                             </strong>
                             
                         </p>
-                        <div class="float-left">
-
-                            <span class="fa fa-thumbs-up fa fa-2x"></span>
-                            <strong>12</strong>
-                            
-                        </div>
                         
-                        <div class="col-md-10 float-left">
                         
-                                <p class="text-mutes">
-                                {{ $reply->body }}
-                                </p>
-                        </div>
-                
+                        <p class="text-muted">
+                            {{ $reply->body }}
+                        </p>
+                        
                     </div>
                     <hr>
-                
                     @endforeach
+                    <div class="float-left">
 
-                    {{ $replies->links() }}
+                        {{ $replies->links() }}
+                    </div>
 
                     @if(Auth()->check())
                         <form action="{{$thread->path().'/replies'}}" method="post">
