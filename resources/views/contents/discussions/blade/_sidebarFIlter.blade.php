@@ -9,8 +9,10 @@
     <li class="list-group-item d-flex justify-content-between lh-condensed">
 
         <h5>
-                <span class="fa fa-globe text-muted" > 
-                All Threads 
+            <span class="fa fa-globe text-muted" > 
+                <a href="/threads" class="text-muted">
+                    All Threads
+                </a>
             </span>
         </h5>
     

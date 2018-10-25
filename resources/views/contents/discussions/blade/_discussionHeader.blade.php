@@ -1,5 +1,5 @@
 <h1 class="font-weight-bold"> {{ $thread->title }}</h1>
-@if (Auth()->check())
+@can('update', $thread)
     <form action="{{ $thread->path() }}" method="post">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
@@ -7,7 +7,7 @@
             <span class="fa fa-trash"> This is a Spam</span>
         </button>
     </form>
-@endif
+@endcan
 <p>
     <strong class="text-muted">
         <span class="text-muted">Published {{ $thread->created_at->diffForHumans() }}</span>
