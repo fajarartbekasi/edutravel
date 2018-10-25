@@ -13,13 +13,24 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('threads', 'Thread\ThreadController@index');
 
-Route::get('threads/{channel}', 'Thread\ThreadController@index');
+Route::get('threads/create', 'Thread\ThreadController@create');
 
 Route::get('threads/{channel}/{thread}', 'Thread\ThreadController@show');
 
 Route::post('threads', 'Thread\ThreadController@store');
 
+Route::get('threads/{channel}', 'Thread\ThreadController@index');
+
 Route::post('threads/{channel}/{thread}/replies', 'Reply\ReplyController@store');
+
+Route::post('/replies/{reply}/favorites', 'Favorite\FavoriteController@store');
+
+
+
+
+
+
+
 
 
 Route::group(['prefix'=>'plans'], function(){
