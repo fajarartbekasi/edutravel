@@ -52,7 +52,7 @@ class CreateThreadTest extends TestCase
        
     }
     /** @test */
-    function unauthorized_users_may_not_delete_threads()
+    function unauthorized_user_may_not_delete_threads()
     {
         $this->withExceptionHandling();
 
@@ -63,24 +63,24 @@ class CreateThreadTest extends TestCase
         $this->signIn();
 
         $this->delete($thread->path())->assertStatus(403);
+
     }
+    
     /** @test */
     function authorized_user_can_deleted_threads()
     {
-        
        $this->signIn();
 
-       $thread = create('App\Models\Thread\Thread', ['user_id'=> auth()->id()]);
+       $thread = create('App\Models\Thread\Thread', ['user_id' => auth()->id()]);
 
        $reply = create('App\Models\Reply\Reply', ['thread_id' => $thread->id]);
 
        $response = $this->json('DELETE', $thread->path());
-        
+
        $response->assertStatus(204);
 
        $this->assertDatabaseMissing('threads', ['id' => $thread->id]);
        $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
-
 
     }
     

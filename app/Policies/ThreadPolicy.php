@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\User;
-use App\Thread;
+use App\Models\Thread\Thread;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ThreadPolicy
