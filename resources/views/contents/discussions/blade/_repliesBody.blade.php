@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     @foreach($replies as $reply )
-                    <div class="discuss-body">
+                    <div id="reply-{{ $reply->id }}" class="discuss-body">
                         <img class="media-object rounded-circle" width="30" src="{{ asset('img/avatars/user.png') }}">
                         <div class="float-right">
                             <form action="/replies/{{ $reply->id }}/favorites" method="POST">
