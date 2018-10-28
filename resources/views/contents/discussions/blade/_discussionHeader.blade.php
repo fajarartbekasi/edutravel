@@ -1,13 +1,15 @@
 <h1 class="font-weight-bold"> {{ $thread->title }}</h1>
-@can('update', $thread)
-    <form action="{{ $thread->path() }}" method="post">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-        <button type="submit" class="btn btn-outline-danger btn-sm float-right">
-            <span class="fa fa-trash"> This is a Spam</span>
-        </button>
-    </form>
-@endcan
+@if(Auth::check())
+    @can('update', $thread)
+        <form action="{{ $thread->path() }}" method="post">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <button type="submit" class="btn btn-outline-danger btn-sm float-right">
+                <span class="fa fa-trash"> This is a Spam</span>
+            </button>
+        </form>
+    @endcan
+@endif
 <p>
     <strong class="text-muted">
         <span class="text-muted">Published {{ $thread->created_at->diffForHumans() }}</span>

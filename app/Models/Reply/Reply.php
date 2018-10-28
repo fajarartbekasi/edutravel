@@ -4,11 +4,12 @@ namespace App\Models\Reply;
 
 use App\FavoriteTable;
 use Illuminate\Database\Eloquent\Model;
+use App\RecordsActivity;
 
 class Reply extends Model
 {
 
-    use FavoriteTable;
+    use FavoriteTable, RecordsActivity;
     
     protected $guarded = [];
 
