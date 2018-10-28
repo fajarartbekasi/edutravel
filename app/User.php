@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Reply\Reply::class);
     }
 
+    public function activity()
+    {
+        return $this->hasMany(\App\Models\Activity\Activity::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'name';

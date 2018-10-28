@@ -59,7 +59,7 @@
                 <button type="button" class="btn btn-outline-info btn-sm  btn-block">Edit Profile</button>
             </div>
         </div>
-        
+        <hr>
         @include('contents.blade.index.timeline')
         
     </div>

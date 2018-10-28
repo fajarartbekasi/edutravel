@@ -10,10 +10,20 @@ class ProfileController extends Controller
 {
    public function show(User $user)
    {
+       
+
        return view('home',[
            'profileUser' => $user,
-           'threads'     => $user->threads()->paginate(5)
+            'activities'     => $this->getActivity($user)
        ]);
 
+   }
+   protected function getActivity(User $user)
+   {
+        return $user->activity()->latest()->with('subject')->take(3)->get()->groupBy(function ($activity) {
+            return $activity->created_at->format('Y-m-d');
+        });
+
+        
    }
 }
