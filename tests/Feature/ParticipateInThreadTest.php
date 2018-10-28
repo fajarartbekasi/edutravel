@@ -84,5 +84,33 @@ class ParticipateInThreadTest extends TestCase
 
         $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
     }
+    /** @test */
+    function unauthorized_users_canot_update_replies()
+    {
+        $this->withExceptionHandling();
 
+        $reply = create('App\Models\Reply\Reply');
+
+        $this->patch("/replies/{$reply->id}")
+            ->assertRedirect('login');
+
+        $this->signIn()
+            ->patch("/replies/{$reply->id}")
+            ->assertStatus(403);
+    }
+
+    /** @test */
+    function authorized_users_can_update_replies()
+    {
+        $this->signIn();
+
+        $reply = create('App\Models\Reply\Reply', ['user_id' => auth()->id()]);
+
+        $updateReply = 'You change reply';
+        
+        $this->patch("/replies/{$reply->id}", ['body' => $updateReply]);
+
+        $this->assertDatabaseHas('replies', ['id' => $reply->id, 'body' => $updateReply]);
+    }
+    
 }

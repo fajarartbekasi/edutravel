@@ -9,6 +9,11 @@
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+        </style>
     </head>
     <body class="forum-discussion signedIn">
         <div id="app">
