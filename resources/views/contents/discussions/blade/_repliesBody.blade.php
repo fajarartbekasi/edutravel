@@ -7,16 +7,39 @@
                     <div id="reply-{{ $reply->id }}" class="discuss-body">
                         <img class="media-object rounded-circle" width="30" src="{{ asset('img/avatars/user.png') }}">
                         <div class="float-right">
-                            <form action="/replies/{{ $reply->id }}/favorites" method="POST">
-                                 @csrf
-                                 <button type="submit" class="btn btn-outline-primary btn-sm" {{ $reply->isFavorited() ? 'disabled' : ''}}>
+                            <div class="row">
+                                <div class="col-md-6 float-right">
+                                    <form action="/replies/{{ $reply->id }}/favorites" method="POST">
+                                            @csrf
+                                            <div class="float-right">
+                                                <button type="submit" class="btn btn-outline-primary btn-sm" {{ $reply->isFavorited() ? 'disabled' : ''}}>
 
-                                     <span class="fa fa-thumbs-up fa fa-1x "></span>
-                                     <strong>{{ $reply->favorites_count }} {{ str_plural('Favorite', $reply->favorites_count ) }}</strong>
-                                 </button>
-                                 
-                            </form>
-                            
+                                                    <span class="fa fa-thumbs-up fa fa-1x "></span>
+                                                    <strong>{{ $reply->favorites_count }} {{ str_plural('Favorite', $reply->favorites_count ) }}</strong>
+                                                </button>
+                                            </div>
+                                    </form>
+                                    
+                                </div>
+                                @if(Auth::check())
+                                    @can('update', $reply)
+                                        <div class="col-md-6 ">
+                                            <form action="/replies/{{ $reply->id }}" method="POST">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <div class="float-right">
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+
+                                                        <span class="fa fa-trash fa fa-1x "> Deleted reply</span>
+                                                        
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    @endcan
+                                @endif
+
+                            </div>
                             
                         </div>
                         <p>
