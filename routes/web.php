@@ -31,6 +31,8 @@ Route::delete('/replies/{reply}', 'Reply\ReplyController@destroy');
 
 Route::post('/replies/{reply}/favorites', 'Favorite\FavoriteController@store');
 
+Route::delete('/replies/{reply}/favorites', 'Favorite\FavoriteController@destroy');
+
 Route::get('/profiles/{user}', 'Profile\ProfileController@show')->name('profile');
 
 

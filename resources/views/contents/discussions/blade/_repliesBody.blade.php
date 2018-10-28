@@ -10,16 +10,17 @@
                                     <div class="float-right">
                                         <div class="row">
                                             <div class="col-md-4 float-right">
-                                                <form action="/replies/{{ $reply->id }}/favorites" method="POST">
-                                                        @csrf
-                                                        <div class="float-right">
-                                                            <button type="submit" class="btn btn-outline-primary btn-sm" {{ $reply->isFavorited() ? 'disabled' : ''}}>
+                                                <favorite :reply="{{ $reply }}"></favorite>
+                                                <!-- <form action="/replies/{{ $reply->id }}/favorites" method="POST">
+                                                    @csrf
+                                                    <div class="float-right">
+                                                        <button type="submit" class="btn btn-outline-primary btn-sm" {{ $reply->isFavorited() ? 'disabled' : ''}}>
 
-                                                                <span class="fa fa-thumbs-up fa fa-1x "></span>
-                                                                <strong>{{ $reply->favorites_count }} {{ str_plural('Favorite', $reply->favorites_count ) }}</strong>
-                                                            </button>
-                                                        </div>
-                                                </form>
+                                                            <span class="fa fa-thumbs-up fa fa-1x "></span>
+                                                            <strong>{{ $reply->favorites_count }} {{ str_plural('Favorite', $reply->favorites_count ) }}</strong>
+                                                        </button>
+                                                    </div>
+                                                </form> -->
                                                 
                                             </div>
                                             @if(Auth::check())
