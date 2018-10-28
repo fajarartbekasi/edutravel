@@ -3,19 +3,13 @@
 @section('content')
 
     <div class="row">
+        
         <div class="col-md-6 py-4">
         
             <a href="{{ route('plans.create') }}"class="btn btn-outline-primary">New Plan</a>
             
         </div>
-        <div class="col-md-6 py-4">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Atention Pleas!</strong> Enjoy your duty.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
+        
     </div>
     <div class="table-responsive py-4">
         <table class="table">

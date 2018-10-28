@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body class="forum-discussion signedIn ">
+    <body class="forum-discussion signedIn">
         <div id="app">
 
             @include('partials.nav')
@@ -19,10 +19,12 @@
 
                 @include('partials.notifications.errors')
 
+                
+                
                 <div id="flash-msg">
                     
                 </div>
-            
+                <flash message="{{ session('flash') }}"></flash>
                 @yield('content')
 
             </div>
