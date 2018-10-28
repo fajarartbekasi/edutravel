@@ -25,18 +25,15 @@
                                             @if(Auth::check())
                                                 @can('update', $reply)
                                                     <div class="col-md-4 ">
-                                                        <form action="/replies/{{ $reply->id }}" method="POST">
-                                                            @csrf
-                                                            {{ method_field('DELETE') }}
-                                                            <div class="float-right">
-                                                                <button type="submit" class="btn btn-outline-danger btn-sm">
-
-                                                                    <span class="fa fa-trash fa fa-1x "> Deleted reply</span>
-                                                                    
-                                                                </button>
-                                                            </div>
+                                                        <div class="float-right">
                                                             
-                                                        </form>
+                                                            <button type="button" class="btn btn-outline-danger btn-sm" @click="destroy">
+
+                                                                <span class="fa fa-trash fa fa-1x "> Deleted reply</span>
+                                                                
+                                                            </button>
+                                                        </div>
+                                                       
                                                     </div>
                                                     <div class="col-md-4">
                                                     
