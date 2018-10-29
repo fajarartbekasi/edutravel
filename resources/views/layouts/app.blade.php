@@ -6,14 +6,26 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" href="">
         <title>{{ config('app.name', 'EduTravel') }}</title>
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             [v-cloak]{
                 display: none;
             }
         </style>
+        <script>
+
+            window.App = {!! json_encode([
+
+                'csrfToken' => csrf_token(),
+
+                'user'      => Auth::user(),
+                
+                'signedIn'  => Auth::check()
+
+
+            ]) !!};
+
+        </script>
     </head>
     <body class="forum-discussion signedIn">
         <div id="app">

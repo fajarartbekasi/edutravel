@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Profile;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Activity\Activity;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {

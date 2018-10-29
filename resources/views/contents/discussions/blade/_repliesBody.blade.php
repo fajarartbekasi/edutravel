@@ -9,21 +9,11 @@
                                     <img class="media-object rounded-circle" width="30" src="{{ asset('img/avatars/user.png') }}">
                                     <div class="float-right">
                                         <div class="row">
-                                            <div class="col-md-4 float-right">
-                                                <favorite :reply="{{ $reply }}"></favorite>
-                                                <!-- <form action="/replies/{{ $reply->id }}/favorites" method="POST">
-                                                    @csrf
-                                                    <div class="float-right">
-                                                        <button type="submit" class="btn btn-outline-primary btn-sm" {{ $reply->isFavorited() ? 'disabled' : ''}}>
-
-                                                            <span class="fa fa-thumbs-up fa fa-1x "></span>
-                                                            <strong>{{ $reply->favorites_count }} {{ str_plural('Favorite', $reply->favorites_count ) }}</strong>
-                                                        </button>
-                                                    </div>
-                                                </form> -->
-                                                
-                                            </div>
                                             @if(Auth::check())
+                                                <div class="col-md-4 float-right">
+                                                    <favorite :reply="{{ $reply }}"></favorite>
+                                                    
+                                                </div>
                                                 @can('update', $reply)
                                                     <div class="col-md-4 ">
                                                         <div class="float-right">

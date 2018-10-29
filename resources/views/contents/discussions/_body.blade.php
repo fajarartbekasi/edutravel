@@ -25,7 +25,7 @@
 
                 <span class="fa fa-reply fa fa-2x"></span>
                 <strong>
-                     {{ $thread->replies_count }}
+                     {{ $thread->replies_count }} {{ str_plural('comment',$thread->replies_count) }}
                 </strong>
                 
             </div>

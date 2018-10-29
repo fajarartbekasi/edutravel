@@ -5,6 +5,15 @@
 
  trait FavoriteTable
  {
+
+    protected static function bootFavoriteTable()
+    {
+        static::deleting( function ($model) {
+
+            $model->favorites->each->delete();
+
+        });
+    }
     public function favorites()
     {
         return $this->morphMany(\App\Models\Favorite\Favorite::class, 'favorited');
@@ -26,7 +35,7 @@
 
         $attributes = ['user_id' => auth()->id()];
 
-        $this->favorites()->where($attributes)->delete();
+        $this->favorites()->where($attributes)->get()->each->delete();
 
     }
 
