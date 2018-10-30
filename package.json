@@ -20,8 +20,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "font-awesome": "^4.7.0",
         "material-icons": "^0.2.3",
-        "vuesax": "^3.4.4",
-        "font-awesome": "^4.7.0"
+        "moment": "^2.22.2",
+        "vuesax": "^3.4.4"
     }
 }

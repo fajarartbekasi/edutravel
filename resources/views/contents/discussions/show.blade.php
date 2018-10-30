@@ -9,7 +9,7 @@
 
                 <div class="col-md-3 float-left">
 
-                    @include('contents.discussions.blade._sidebarFilter')
+                    
 
                     @include('contents.discussions.blade._sidebarChannel')            
 
@@ -21,17 +21,7 @@
 
                     <hr>
 
-                    <replies :data="{{ $thread->replies }}" 
-                             @added="repliesCount++"
-                             @removed="repliesCount--">
-                    </replies>
-
-                    <!-- @include('contents.discussions.blade._repliesBody') -->
-
-                    <!-- <div class="float-left">
-                            
-                        {{ $replies->links() }}
-                    </div> -->
+                    <replies @added="repliesCount++" @removed="repliesCount--"></replies>
 
                     
                 </div>

@@ -11,11 +11,9 @@
                                         <a :href="'/profiles/'+data.owner.name" v-text="data.owner.name">
                                             
                                         </a>
-                                        
-                                        <strong class="text-muted">
-                                            <span class="text-muted">Published {{ data.created_at }}</span>
-                                        </strong>
-                                        
+                                         
+                                         <span v-text="ago"></span>
+                                       
                                     </p>
                                     
                                     <div v-if="editting">
@@ -68,6 +66,8 @@
 <script>
 
     import Favorite from './Favorite.vue';
+    
+    import moment from 'moment';
 
     export default {
 
@@ -87,6 +87,13 @@
 
         },
         computed: {
+
+            ago() {
+
+                return moment(this.data.created_at).fromNow()+'....';
+
+            },
+
             signedIn() {
 
                 return window.App.signedIn;

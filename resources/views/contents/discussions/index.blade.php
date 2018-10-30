@@ -9,8 +9,6 @@
           <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
 
-                @include('contents.discussions.blade._sidebarFilter')
-
                 @include('contents.discussions.blade._sidebarChannel')            
 
             </div>

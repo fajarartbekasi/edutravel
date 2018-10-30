@@ -13,7 +13,7 @@ class ReplyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'index']);
     } 
 
     /**
@@ -23,6 +23,14 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function index($channelId, Thread $thread)
+    {
+
+        return $thread->replies()->paginate(20);
+
+    }
+
     public function store($channelId, Thread $thread)
     {
         $this->validate(request(), [

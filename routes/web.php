@@ -23,15 +23,21 @@ Route::post('threads', 'Thread\ThreadController@store');
 
 Route::get('threads/{channel}', 'Thread\ThreadController@index');
 
-Route::post('threads/{channel}/{thread}/replies', 'Reply\ReplyController@store');
+Route::get('/threads/{channel}/{thread}/replies', 'Reply\ReplyController@index');
+
+Route::post('/threads/{channel}/{thread}/replies', 'Reply\ReplyController@store');
 
 Route::patch('/replies/{reply}', 'Reply\ReplyController@update');
 
 Route::delete('/replies/{reply}', 'Reply\ReplyController@destroy');
 
+
+
 Route::post('/replies/{reply}/favorites', 'Favorite\FavoriteController@store');
 
 Route::delete('/replies/{reply}/favorites', 'Favorite\FavoriteController@destroy');
+
+
 
 Route::get('/profiles/{user}', 'Profile\ProfileController@show')->name('profile');
 
