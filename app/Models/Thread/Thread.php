@@ -2,6 +2,7 @@
 
 namespace App\Models\Thread;
 
+use App\Models\Reply\Reply;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
@@ -16,10 +17,6 @@ class Thread extends Model
     protected static function boot()
     {
         parent::boot();
-        
-        static::addGlobalScope('replyCount', function($builder){
-            $builder->withCount('replies');
-        });
 
         static::deleting(function($thread){
 
@@ -47,7 +44,7 @@ class Thread extends Model
     public function addReply($reply)
     {
 
-       return $this->replies()->create($reply);
+       return $this->replies()->create($reply); 
 
     }
 
@@ -69,6 +66,25 @@ class Thread extends Model
 
         return $filters->apply($query);
 
+    }
+    public function subscribe($userId = null)
+    {
+
+        $this->subscriptions()->create([
+            'user_id'   => $userId ?: auth()->id()
+        ]);
+
+    }
+    public function subscriptions()
+    {
+      return  $this->hasMany(\App\Models\Thread\ThreadSubscription::class);
+
+    }
+    public function unsubscribe($userId = null)
+    {
+        $this->subscriptions()
+             ->where('user_id', $userId ?: auth()->id())
+             ->delete();
     }
     
 }

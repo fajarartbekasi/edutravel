@@ -9,7 +9,7 @@
 
                 <div class="col-md-3 float-left">
 
-                    
+                    @include('contents.discussions.blade._sidebarFIlter')
 
                     @include('contents.discussions.blade._sidebarChannel')            
 

@@ -64292,10 +64292,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
+    watch: {
+        dataSet: function dataSet() {
+
+            this.page = this.dataSet.current_page;
+
+            this.prevUrl = this.dataSet.prev_page_url;
+
+            this.nextUrl = this.dataSet.next_page_url;
+        },
+        page: function page() {
+
+            this.broadcast().updateUrl();
+        }
+    },
+
     computed: {
         shouldPaginate: function shouldPaginate() {
 
-            return this.prevUrl | this.nextUrl;
+            return !!this.prevUrl || !!this.nextUrl;
+        }
+    },
+
+    methods: {
+        broadcast: function broadcast() {
+
+            return this.$emit('changed', this.page);
+        },
+        updateUrl: function updateUrl() {
+
+            history.pushState(null, null, '?page=' + this.page);
         }
     }
 
@@ -64324,7 +64350,26 @@ var render = function() {
             ],
             staticClass: "page-item"
           },
-          [_vm._m(0)]
+          [
+            _c(
+              "a",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#", "aria-label": "Previous", rel: "prev" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.page--
+                  }
+                }
+              },
+              [
+                _c("span", { attrs: { "aria-hidden": "true" } }, [
+                  _vm._v("« Previous")
+                ])
+              ]
+            )
+          ]
         ),
         _vm._v(" "),
         _c(
@@ -64340,39 +64385,31 @@ var render = function() {
             ],
             staticClass: "page-item"
           },
-          [_vm._m(1)]
+          [
+            _c(
+              "a",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#", "aria-label": "Next", rel: "next" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.page++
+                  }
+                }
+              },
+              [
+                _c("span", { attrs: { "aria-hidden": "true" } }, [
+                  _vm._v("Next »")
+                ])
+              ]
+            )
+          ]
         )
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "page-link",
-        attrs: { href: "#", "aria-label": "Previous", rel: "prev" }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("« Previous")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "page-link",
-        attrs: { href: "#", "aria-label": "Next", rel: "next" }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("Next »")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -64535,6 +64572,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -64551,12 +64589,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
 
-        return {
-
-            dataSet: false,
-            endpoint: location.pathname + '/replies'
-
-        };
+        return { dataSet: false };
     },
     created: function created() {
 
@@ -64564,13 +64597,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        fetch: function fetch() {
+        fetch: function fetch(page) {
 
-            axios.get(this.url()).then(this.refresh);
+            axios.get(this.url(page)).then(this.refresh);
         },
-        url: function url() {
+        url: function url(page) {
 
-            return location.pathname + '/replies';
+            if (!page) {
+
+                var query = location.search.match(/page=(\d+)/);
+
+                page = query ? query[1] : 1;
+            }
+
+            return location.pathname + '/replies?page=' + page;
         },
         refresh: function refresh(_ref) {
             var data = _ref.data;
@@ -64578,6 +64618,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.dataSet = data;
             this.items = data.data;
+
+            window.scrollTo(0, 0);
         }
     }
 });
@@ -65431,9 +65473,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
-    props: ['endpoint'],
-
     data: function data() {
 
         return {
@@ -65454,7 +65493,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addReply: function addReply() {
             var _this = this;
 
-            axios.post(this.endpoint, { body: this.body }).then(function (_ref) {
+            axios.post(location.pathname + '/replies', { body: this.body }).then(function (_ref) {
                 var data = _ref.data;
 
 
@@ -65608,12 +65647,12 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _c("paginator", { attrs: { dataSet: _vm.dataSet } }),
+      _c("paginator", {
+        attrs: { dataSet: _vm.dataSet },
+        on: { changed: _vm.fetch }
+      }),
       _vm._v(" "),
-      _c("new-reply", {
-        attrs: { endpoint: _vm.endpoint },
-        on: { created: _vm.add }
-      })
+      _c("new-reply", { on: { created: _vm.add } })
     ],
     2
   )

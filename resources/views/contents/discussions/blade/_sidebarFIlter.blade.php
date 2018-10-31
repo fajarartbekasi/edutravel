@@ -17,8 +17,8 @@
         </h5>
     
     </li>
+    @if(Auth()->check())
     <li class="list-group-item d-flex justify-content-between lh-condensed">
-        @if(Auth()->check())
             
             <h5>
                 <span class="fa fa-question text-muted" > 
@@ -28,10 +28,10 @@
                 </span>
             </h5>
         
+            
+            
+        </li>
         @endif
-        
-    
-    </li>
 
     <li class="list-group-item d-flex justify-content-between lh-condensed">
 
@@ -39,6 +39,18 @@
             <span class="fa fa-circle text-muted" > 
                 <a href="/threads?popular=1" class="text-muted">
                     Popular Threads
+                </a> 
+            </span>
+        </h5>
+        
+    
+    </li>
+    <li class="list-group-item d-flex justify-content-between lh-condensed">
+
+        <h5>
+            <span class="fa fa-circle text-muted" > 
+                <a href="/threads?unanswered=1" class="text-muted">
+                    Unanswered Threads
                 </a> 
             </span>
         </h5>
