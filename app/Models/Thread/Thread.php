@@ -4,9 +4,10 @@ namespace App\Models\Thread;
 
 use App\Models\Reply\Reply;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\ThreadWasUpdated;
 
 class Thread extends Model
-{   
+{
 
     use \App\RecordsActivity;
 
@@ -20,15 +21,15 @@ class Thread extends Model
     {
         parent::boot();
 
-        static::deleting(function($thread){
+        static::deleting(function ($thread) {
 
             $thread->replies->each->delete();
-        
+
         });
 
 
     }
-    
+
     public function creator()
     {
 
@@ -37,17 +38,26 @@ class Thread extends Model
     }
 
     public function replies()
-    {    
+    {
 
-       return $this->hasMany(\App\Models\Reply\Reply::class);
+        return $this->hasMany(\App\Models\Reply\Reply::class);
 
     }
 
     public function addReply($reply)
     {
 
-       return $this->replies()->create($reply); 
+        $reply = $this->replies()->create($reply);
 
+        $this->subscriptions
+             ->filter(function ($sub) use ($reply) {
+
+                return $sub->user_id != $reply->user_id;
+
+            })->each->notify($reply);
+           
+        
+        return $reply;
     }
 
     public function path()
@@ -63,7 +73,7 @@ class Thread extends Model
 
     }
 
-    public function scopeFilter($query ,$filters)
+    public function scopeFilter($query, $filters)
     {
 
         return $filters->apply($query);
@@ -73,16 +83,17 @@ class Thread extends Model
     {
 
         $this->subscriptions()->create([
-            'user_id'   => $userId ?: auth()->id()
+            'user_id' => $userId ? : auth()->id()
         ]);
 
+        return $this;
     }
-    
+
     public function unsubscribe($userId = null)
     {
         $this->subscriptions()
-             ->where('user_id', $userId ?: auth()->id())
-             ->delete();
+            ->where('user_id', $userId ? : auth()->id())
+            ->delete();
     }
     public function subscriptions()
     {
@@ -92,8 +103,8 @@ class Thread extends Model
     public function getIsSubscribedToAttribute()
     {
         return $this->subscriptions()
-                    ->where('user_id', auth()->id())
-                    ->exists();
+            ->where('user_id', auth()->id())
+            ->exists();
     }
-    
+
 }

@@ -10,20 +10,20 @@
       <a class="dropdown-item" href="#">
         <span class="fa fa-globe mr-2">All Threads</span> 
       </a>
+        @if(Auth::check())
+        <a class="dropdown-item" href="/threads?by={{ auth()->user()->name }}">
+          <span class="fa fa-bolt mr-2 text-muted">
 
-      <a class="dropdown-item" href="/threads?by={{ auth()->user()->name }}">
-        <span class="fa fa-bolt mr-2 text-muted">
-
-          My Question
-        </span>
-      </a>
-      @if(Auth::check())
+            My Question
+          </span>
+        </a>
+        @endif
         <a class="dropdown-item" href="#">
           <span class="fa fa-star mr-2 text-muted">
             My Favorite
           </span>
         </a>
-      @endif
+      
         <a class="dropdown-item" href="/threads?popular=1">
           <span class="fa fa-fire mr-2 text-muted">
             Popular
