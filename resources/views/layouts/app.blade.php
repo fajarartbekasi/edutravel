@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" href="">
         <title>{{ config('app.name', 'EduTravel') }}</title>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/_style.css') }}" rel="stylesheet">
         <style>
             [v-cloak]{
                 display: none;
@@ -27,12 +27,12 @@
 
         </script>
     </head>
-    <body class="forum-discussion signedIn">
+    <body class="bg-light">
         <div id="app">
 
             @include('partials.nav')
 
-            <div class="container">
+            <main role="main" class="container">
 
                 @include('partials.notifications.errors')
 
@@ -43,8 +43,9 @@
                 </div>
                 <flash message="{{ session('flash') }}"></flash>
                 @yield('content')
+            </main> 
 
-            </div>
+
 
             @include('partials.footer')
         </div>

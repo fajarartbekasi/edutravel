@@ -31,7 +31,9 @@ Route::patch('/replies/{reply}', 'Reply\ReplyController@update');
 
 Route::delete('/replies/{reply}', 'Reply\ReplyController@destroy');
 
-Route::post('/threads/{channel}/{thread}/subscriptions','Thread\ThreadSubscriprtionsController@store')->middleware('auth');
+Route::post('/threads/{channel}/{thread}/subscriptions','Thread\ThreadSubscriptionsController@store')->middleware('auth');
+
+Route::delete('/threads/{channel}/{thread}/subscriptions','Thread\ThreadSubscriptionsController@destroy')->middleware('auth');
 
 Route::post('/replies/{reply}/favorites', 'Favorite\FavoriteController@store');
 

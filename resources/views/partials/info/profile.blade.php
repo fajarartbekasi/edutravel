@@ -1,67 +1,33 @@
-<div class="user jumbotron jumbotron-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-2 text-center">
-                <img class="avatar rounded-circle" src="{{ asset('img/avatars/user.png') }}">
+<div class="row">
+    
+    <div class="col-md-4">
 
-            </div>
-            <div class="media-content py-4 col-sm-10 ">
-                
-                <div class="row">
-                    
-                    <div class="col-sm-12">
-                        <div class="header text-muted">
-                            <div class="float-left">
+        <div class="my-3 p-3 card bg-white rounded-4 shadow-sm" style="width: 18rem;">
 
-                                <h3 class="font-weight-bold">
-                                    {{ $profileUser->name }}
-                                </h3> 
-                            </div>
-                            <div class="float-right text-right">
-                                <H3>Experience</H3>
-                                <H2 class="font-weight-bold">830</H2>
-                                <H5 class="font-weight-bold">0 BEST REPLY AWARDS</H5>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+            <img class="card-img-top" src="{{ asset('/img/avatars/user.png') }}"  alt="Card image cap">
+            
+            <h5 class="text-center card-title font-weight-bold py-3">{{ $profileUser->name }}</h5>
+            <!-- <p class="text-center text-muted font-italic ">@fajarartbekasi</p> -->
+            <h2 class="text-center font-weight-bold">830</h2>
+            <p class="text-center font-italic text-muted">Experience</p>
+            <button type="submit" class="btn btn-outline-info">Update Profile</button>
+            <div class="d-block mt-3">
+                <span class="fa fa-star text-muted"> {{ $profileUser->favorites_count }} {{ str_plural('Favorite', $profileUser->favorites_count) }}</span>
+                <span class="fa fa-check-square text-muted"> 0 Lesson</span>
+                <span class="fa fa-calendar text-muted"> {{ $profileUser->created_at->diffForHumans() }}</span>
             </div>
-            <div class="collapse mt-3" id="services">
-                <form action="/scheduling/physical-appointment" method="POST" class="form-inline">
-                    <div class="form-group mr-1">
-                        <input type="text" name="" id="" class="form-control" placeholder="Service name....">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-sm btn-danger" type="submit">Add Services</button>
-                    </div>
-                </form>
-            </div>
-
+           
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <p class="text-muted text-center">
-                    {{ $profileUser->created_at->diffForHumans() }}
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="text-muted text-center">
-                    0 Lessons Completed
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="text-muted text-center">
-                    {{ $profileUser->favorites_count }} {{ str_plural('Favorite', $profileUser->favorites_count) }}
-                </p>
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-outline-info btn-sm  btn-block">Edit Profile</button>
-            </div>
-        </div>
-        <hr>
-        @include('contents.blade.index.timeline')
-        
+
     </div>
-</div>
+    <div class="col-md-8">
+        <h4 class="border-bottom text-muted ">Your Activity</h4>
+        <div class="my-3 p-3 card bg-white rounded-4 shadow-sm">
 
+             @include('contents.blade.index.timeline')
+           
+        </div>
+
+    </div>
+
+</div>

@@ -1,20 +1,18 @@
 <template>
-
-    <div>
-
+    
+    <div >
         <div v-for="(reply, index) in items" :key="reply.id">
-
-            <reply :data="reply" @deleted="remove(index)">
             
-            </reply>
-
+                <reply :data="reply" @deleted="remove(index)">
+                
+                </reply>
+            
 
         </div>
 
         <paginator :dataSet="dataSet" @changed="fetch"></paginator>
 
         <new-reply @created="add"></new-reply>
-
     </div>
 
 </template>

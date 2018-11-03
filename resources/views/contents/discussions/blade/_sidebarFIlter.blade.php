@@ -37,7 +37,7 @@
 
         <h5>
             <span class="fa fa-circle text-muted" > 
-                <a href="/threads?popular=1" class="text-muted">
+                <a href="" class="text-muted">
                     Popular Threads
                 </a> 
             </span>
@@ -49,7 +49,7 @@
 
         <h5>
             <span class="fa fa-circle text-muted" > 
-                <a href="/threads?unanswered=1" class="text-muted">
+                <a href="" class="text-muted">
                     Unanswered Threads
                 </a> 
             </span>

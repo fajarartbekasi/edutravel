@@ -3,32 +3,22 @@
 @section('content')
 
     <thread :initial-replies-count="{{ $thread->replies_count }}" inline-template>
-        <div class="container py-4">
-            
-            <div class="row">
+        
+        <div class="row">
 
-                <div class="col-md-3 float-left">
+            <div class="col-md-12">
+                @include('contents.discussions.blade._discussionHeader')
 
-                    @include('contents.discussions.blade._sidebarFIlter')
-
-                    @include('contents.discussions.blade._sidebarChannel')            
-
-                </div>
-
-                <div class="col-md-9 order-md-1">
-
-                    @include('contents.discussions.blade._discussionHeader')
-
-                    <hr>
-
-                    <replies @added="repliesCount++" @removed="repliesCount--"></replies>
-
-                    
-                </div>
-            
             </div>
+            <div class="col-md-12">
 
+                <replies @added="repliesCount++" @removed="repliesCount--"></replies>
+                
+            </div>
+            
         </div>
+
+       
     </thread>
 
 

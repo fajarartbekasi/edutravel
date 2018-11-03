@@ -16,12 +16,14 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('flash', require('./components/Flash.vue'));
 
-Vue.component('paginator', require('./components/Paginator.vue'));
 
-Vue.component('thread', require('./pages/Thread.vue'));
+const files = require.context('./', true, /\.vue$/i)
 
+files.keys().map(key => {
+    const name = _.last(key.split('/')).split('.')[0]
+    return Vue.component(name, files(key))
+})
 
 const app = new Vue({
     el: '#app'

@@ -1,4 +1,5 @@
-<nav class="navbar navbar-icon-top navbar-expand-lg fixed-top navbar-dark bg-white text-muted">
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-white">
 
     <a class="navbar-brand mr-auto mr-lg-0 text-muted" href="#">
         <strong>
@@ -7,12 +8,15 @@
         </strong>
         
     </a>
-    <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="offcanvas">
+    
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+
         <span class="navbar-toggler-icon"></span>
+
     </button>
 
-    @include('partials._menuNav')
-   
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        @include('partials._menuNav')
+    </div>
 </nav>
-
-@include('partials._scroll')
+@include('partials._tabNav')

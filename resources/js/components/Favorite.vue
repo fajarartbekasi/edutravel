@@ -1,8 +1,8 @@
 <template>
-    <div class="float-right">
+    <div class="float-right my-2 my-lg-0">
         <button type="submit" :class="classes" @click="toggle">
 
-            <span class="fa fa-heart fa fa-1x "></span>
+            <span class="fa fa-heart fa fa-1x mr-3"> Favorite</span>
             <span v-text="count"></span>
 
         </button>
@@ -26,7 +26,7 @@
         computed: {
             classes() {
 
-                return ['btn', this.active ? 'btn-outline-primary btn-sm' : 'btn-outline-secondary btn-sm'];
+                return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3' : 'btn-outline-secondary btn-sm mr-3'];
 
             },
             endpoint() {

@@ -1,79 +1,75 @@
-<h1 class="font-weight-bold"> {{ $thread->title }}</h1>
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    
+    
+    <a href="{{ $thread->path() }}">
+        <h3 class="pb-2 mb-0 text-info font-weight-bold">{{ $thread->title }}</h3>
+    </a>
 
-@if(Auth::check())
+    <strong class="text-info font-weight-bold">
+        {{ $thread->channel->slug }}  . 
+        <strong class="text-muted"> 
+        Published Published {{ $thread->created_at->diffForHumans() }} by . 
+        </strong> 
+        <a href="{{ route('profile', $thread->creator) }}">
+            {{ $thread->creator->name }}
+        </a>
+    </strong>
 
-    @can('update', $thread)
+    <div class="media text-muted pt-3">
 
-        <form action="{{ $thread->path() }}" method="post">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray font-italic">
+        
+        {{ $thread->body }}
+        </p>
 
-            {{ csrf_field() }}
+    </div>
+    
+    <div class="py-3 text-md-left">
 
-            {{ method_field('DELETE') }}
+        <img class="media-object rounded-circle" width="30" height="30" src="{{ asset('img/avatars/user.png') }}">
 
-            <button type="submit" class="btn btn-outline-danger btn-sm float-right">
+        <strong class="text-muted font-weight-bold">
 
-                <span class="fa fa-trash"> This is a Spam</span>
+            {{ $thread->creator->name }}
+            
+        </strong>
+        <div class="float-right text-muted">
+            @if(Auth::check())
 
+                @can('update', $thread)
+                
+                    <div class="float-right my-2 my-lg-0">
+
+                        <form action="{{ $thread->path() }}" method="post" >
+
+                            {{ csrf_field() }}
+
+                            {{ method_field('DELETE') }}
+
+                            <button type="submit" class="btn btn-outline-danger btn-sm mr-3">
+
+                                <span class="fa fa-trash"> This is a Spam</span>
+
+                            </button>
+
+                        </form>
+                        
+                    </div>
+
+                @endcan
+            @endif
+
+            <subscribe-button :active="{{ json_encode($thread->isSubscribedTo) }}"></subscribe-button>
+            <button type="submit" class="btn btn-outline-primary btn-sm mr-3 text-muted">
+
+                <span class="fa fa-reply mr-3 text-muted" v-text="repliesCount">  </span>Favorites
             </button>
+            <!-- <span class="fa fa-comments mr-3"> 7</span>
+            <span class="fa fa-check-square mr-3"> 7</span>
+            <span class="fa fa-star mr-3"> 7</span> -->
 
-        </form>
+        </div>
 
-    @endcan
+    </div>
 
-@endif
-
-<p>
-
-    <strong class="text-muted">
-
-        <span class="text-muted">
-            
-            Published {{ $thread->created_at->diffForHumans() }}
-    
-        </span>
-
-        by  <a href="{{ route('profile', $thread->creator) }}">
-            
-                {{ $thread->creator->name }}
-
-            </a>
-
-    </strong>
-    
-</p>
-
-<a href="http://" class="text-muted" title="Edit Your Discussion">
-
-    <span class="fa fa-pencil "></span>
-
-</a>
-
-&nbsp;
-
-<a href="http://" class="text-muted" title="Want an email each time this thread receives a new reply?">
-
-    <span class="fa fa-envelope "></span>
-
-</a>
-
-&nbsp;
-
-<a href="http://" class="text-muted" title="Want to favorite this conversation ?">
-
-    <span class="fa fa-star"></span>
-
-</a>
-
-<p class="text-muted ">
-
-    {{ $thread->body }}
-    
-    <strong class="float-right">
-
-        {{ str_plural('comment', $thread->replies_count) }}
-    </strong>
-    &nbsp;
-    <span class="float-right" v-text="repliesCount"> 
-    </span>
-
-</p>
+</div>

@@ -1,75 +1,61 @@
  @if (Route::has('login'))
 
         @auth
-           <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-        
-                <div class="col-md-8 col-md-offset-3">
-
-                    <form action="" class="search-form">
-
-                            <div class="form-group has-feedback">
+           <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-muted" href="#">Skills <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="#">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="/threads">Disscusions</a>
+                </li>
                 
-                                <label for="search" class="sr-only">Search</label>
-                    
-                                <span class="fa fa-search form-control-feedback"></span>
-                    
-                                <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                    
-                            </div>
-
-                    </form>
+            </ul>
+            <ul class="navbar-nav text-muted">
                 
-                </div>
-
-                <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle fa fa-user" 
+                        id="dropdown01" 
+                        data-toggle="dropdown" 
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                    &nbsp; My EduTravels
+                    </span>
                     
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle text-muted" href="https://example.com" 
-                            id="dropdown01" 
-                            data-toggle="dropdown" 
-                            aria-haspopup="true" 
-                            aria-expanded="false">
-                            
-                            <i class="fa fa-gear">
-                
-                                <span class=" badge badge-secondary">11</span> 
-
-                            </i>
-
-                            Settings
-                        
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a href="{{ route('profile', Auth::user()) }}" class="dropdown-item fa fa-user text-muted">
-                                My Profile
-                            </a>
-                            <a href="{{ route('logout') }}" class="dropdown-item fa fa-sign-out text-muted" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Sign Out
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                            
-                        
-                        </div>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle fa fa-bell text-muted" 
+                        id="dropdown01" 
+                        data-toggle="dropdown" 
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                    &nbsp; Notifications
+                    </span>
                     
-                    </li>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
                 
-                </ul>
-
-            </div>
+            </ul>
         @else
-            <div class="navbar-collapse offcanvas-collapse " id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto ">
-                    
-                    <li class="nav-item dropdown">
-                        <a href="{{ route('login') }}" class="nav-link text-muted ">Login</a>
-                        <a href="{{ route('register') }}" class="nav-link text-muted">Register</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav mr-sm-2">
+                <li class="nav-item">
+                    <a href="{{ route('login') }}" class="nav-link text-muted ">Login</a>
+                <li>
+                <li class="nav-item">
+                    <a href="{{ route('register') }}" class="nav-link text-muted">Register</a>
+                </li>
+            </ul>
         @endauth
   
 @endif
