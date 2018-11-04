@@ -33,23 +33,31 @@ class ReplyController extends Controller
 
     public function store($channelId, Thread $thread)
     {
-        $this->validate(request(), [
 
-            'body' => 'required'
-        ]);
-
-        $reply = $thread->addReply([
-            'body' => request('body'),
-            'user_id' => auth()->id()
-        ]);
-
-        if(request()->expectsJson()) {
-
-            return $reply->load('owner');
-
+        if($thread->locked){
+            return response('Thread is locked', 422);
         }
+        return $thread->addReply([
+            'body' => request('body'),
+             'user_id' => auth()->id()
+         ])->load('owner');
+        // $this->validate(request(), [
 
-        return back()->with('flash', 'Your reply has been left.');
+        //     'body' => 'required'
+        // ]);
+
+        // $reply = $thread->addReply([
+        //     'body' => request('body'),
+        //     'user_id' => auth()->id()
+        // ]);
+
+        // if(request()->expectsJson()) {
+
+        //     return $reply->load('owner');
+
+        // }
+
+        // return back()->with('flash', 'Your reply has been left.');
     }
 
     public function update(Reply $reply)
