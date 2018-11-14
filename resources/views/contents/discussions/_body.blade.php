@@ -6,10 +6,15 @@
             </a>
 
             <strong class="text-info font-weight-bold">
-                {{ $thread->channel->slug }}  . 
-                <strong class="text-muted"> 
-                Published Published {{ $thread->created_at->diffForHumans() }} by . 
-                </strong> 
+                    <span class="badge badge-pill badge-info text-white">
+
+                      {{ $thread->channel->slug }}
+
+                    </span>
+                  .
+                <strong class="text-muted">
+                Published Published {{ $thread->created_at->diffForHumans() }} by .
+                </strong>
                 <a href="{{ route('profile', $thread->creator) }}">
                     {{ $thread->creator->name }}
                 </a>
@@ -18,12 +23,12 @@
             <div class="media text-muted pt-3">
 
                 <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray font-italic">
-                
+
                 {{ $thread->body }}
                 </p>
 
             </div>
-            
+
             <div class="py-3 text-md-left">
 
                 <img class="media-object rounded-circle" width="30" height="30" src="{{ asset('img/avatars/user.png') }}">
@@ -32,7 +37,7 @@
                     <a href="{{ route('profile', $thread->creator) }}" class="text-muted">
                         {{ $thread->creator->name }}
                     </a>
-                    
+
                 </strong>
                 <div class="float-right text-muted">
 
@@ -44,7 +49,7 @@
                 </div>
 
             </div>
-        
+
         </div>
-    
+
 @endforeach

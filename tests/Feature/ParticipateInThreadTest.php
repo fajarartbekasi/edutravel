@@ -14,7 +14,7 @@ class ParticipateInThreadTest extends TestCase
     function unauthenticated_user_may_not_add_replies()
     {
         $this->withExceptionHandling();
-        
+
         $thread = create('App\Models\Thread\Thread');
 
         $reply = make('App\Models\Reply\Reply');
@@ -28,7 +28,7 @@ class ParticipateInThreadTest extends TestCase
         // $this->withExceptionHandling()
         //     ->post('/threads/some/1/replies', [])
         //     ->assertRedirect('/login');
-        
+
     }
     /** @test */
     function an_authenticated_user_may_participate_in_forum_threads()
@@ -62,7 +62,7 @@ class ParticipateInThreadTest extends TestCase
     function unauthorized_users_canot_delete_replies()
     {
         $this->withExceptionHandling();
-        
+
         $reply = create('App\Models\Reply\Reply');
 
         $this->delete("/replies/{$reply->id}")
@@ -109,10 +109,10 @@ class ParticipateInThreadTest extends TestCase
         $reply = create('App\Models\Reply\Reply', ['user_id' => auth()->id()]);
 
         $updateReply = 'You change reply';
-        
+
         $this->patch("/replies/{$reply->id}", ['body' => $updateReply]);
 
         $this->assertDatabaseHas('replies', ['id' => $reply->id, 'body' => $updateReply]);
     }
-    
+
 }

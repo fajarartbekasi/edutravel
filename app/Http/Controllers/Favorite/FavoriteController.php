@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Favorite;
 
+
 use App\Models\Favorite\Favorite;
-use App\Models\Reply\Reply;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Reply\Reply;
 
 class FavoriteController extends Controller
 {
 
     public function __construct()
     {
-       $this->middleware('auth');
+
+        $this->middleware('auth');
+
     }
 
     public function store(Reply $reply)
@@ -20,7 +23,6 @@ class FavoriteController extends Controller
 
        $reply->favorite();
 
-       return back();
     }
     public function destroy(Reply $reply)
     {

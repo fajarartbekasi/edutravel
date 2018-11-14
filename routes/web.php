@@ -53,10 +53,10 @@ Route::delete('/profiles/{user}/notifications/{notification}', 'Profile\UserNoti
 
 
 Route::group(['prefix'=>'plans'], function(){
-    
+
     Route::get('/plans','Plan\PlanController@index')->name('plans.index');
     Route::get('/create','Plan\PlanController@create')->name('plans.create');
-    
+
 });
 
 
@@ -72,5 +72,5 @@ Route::group(['prefix'=>'users'], function(){
     Route::get('/series/Step-by-step-for-learn-english-speak', 'Module\LearnController@show')->name('users.series.Step-by-step-for-learn-english-speak');
 
     Route::get('/series/Search-partner-to-speaking', 'Module\SeriesController@show')->name('users.series.Search-partner-to-speaking');
-    
+
 });

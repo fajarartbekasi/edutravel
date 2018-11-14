@@ -25,7 +25,7 @@
 
         if (!$this->favorites()->where($attributes)->exists()) {
 
-            $this->favorites()->create($attributes);
+          return  $this->favorites()->create($attributes);
         }
 
     }
@@ -53,4 +53,3 @@
         return $this->favorites->count();
     }
  }
- 

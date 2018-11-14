@@ -14,7 +14,7 @@ class ReplyController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => 'index']);
-    } 
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,30 +34,24 @@ class ReplyController extends Controller
     public function store($channelId, Thread $thread)
     {
 
-        if($thread->locked){
-            return response('Thread is locked', 422);
-        }
-        return $thread->addReply([
+
+        $this->validate(request(), [
+
+            'body' => 'required'
+        ]);
+
+        $reply = $thread->addReply([
             'body' => request('body'),
-             'user_id' => auth()->id()
-         ])->load('owner');
-        // $this->validate(request(), [
+            'user_id' => auth()->id()
+        ]);
 
-        //     'body' => 'required'
-        // ]);
+        if(request()->expectsJson()) {
 
-        // $reply = $thread->addReply([
-        //     'body' => request('body'),
-        //     'user_id' => auth()->id()
-        // ]);
+            return $reply->load('owner');
 
-        // if(request()->expectsJson()) {
+        }
 
-        //     return $reply->load('owner');
-
-        // }
-
-        // return back()->with('flash', 'Your reply has been left.');
+        return back()->with('flash', 'Your reply has been left.');
     }
 
     public function update(Reply $reply)
@@ -67,12 +61,12 @@ class ReplyController extends Controller
         $reply->update(['body' => request('body')]);
 
     }
-    
+
     public function destroy(Reply $reply)
-    {   
+    {
 
         $this->authorize('update', $reply);
-       
+
         $reply->delete();
 
         if(request()->expectsJson()) {

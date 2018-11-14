@@ -1,8 +1,8 @@
 <?php
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class FavoritesTest extends TestCase
 {
@@ -13,23 +13,24 @@ class FavoritesTest extends TestCase
     function guests_can_not_favorite_anything()
     {
 
-         $this->withExceptionHandling()
-            ->post('/replies/1/favorites')
-            ->assertRedirect('/login');
+        $this->withExceptionHandling()
+             ->post('replies/1/favorites')
+             ->assertRedirect('/login');
+
     }
     /** @test */
     public function an_authenticated_user_can_favorite_any_replies()
     {
 
         $this->signIn();
-        
+
         $reply = create('App\Models\Reply\Reply');
 
         $this->post('replies/'.$reply->id.'/favorites');
 
 
         $this->assertCount(1, $reply->favorites);
-        
+
     }
     /** @test */
     public function an_authenticated_user_can_unfavorite_a_reply()
@@ -65,6 +66,6 @@ class FavoritesTest extends TestCase
         $this->assertCount(1, $reply->favorites);
 
     }
-    
-    
+
+
 }
