@@ -14,7 +14,7 @@
                     <span class="qa-message-what"></span>
                     <span class="qa-message-who">
                         <span class="qa-message-who-pad text-muted">Favorite reply</span>
-                       
+
                     </span>
                     <span class="qa-message-when text-muted">
                         <span class="qa-message-when-data">{{$date}}</span>
@@ -25,7 +25,7 @@
     @endslot
 
     @slot('body')
-        <div class="qa-message-content text-dark">
+        <div class="qa-message-content text-white">
             {{ $activity->subject->favorited->body }}.
         </div>
     @endslot

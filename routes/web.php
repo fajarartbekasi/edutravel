@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@show');
 
 Route::get('threads', 'Thread\ThreadController@index');
 
@@ -47,9 +47,13 @@ Route::get('/profiles/{user}/notifications', 'Profile\UserNotificationsControlle
 
 Route::delete('/profiles/{user}/notifications/{notification}', 'Profile\UserNotificationsController@destroy');
 
+Route::get('/channels', 'Channel\ChannelController@indez');
+Route::get('/channels/create', 'Channel\ChannelController@create');
+Route::post('/channels/store', 'Channel\ChannelController@store');
 
 
 
+Route::get('/events', 'Event\EventController@index');
 
 
 Route::group(['prefix'=>'plans'], function(){

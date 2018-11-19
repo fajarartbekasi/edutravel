@@ -13522,10 +13522,7 @@ a.text-dark:focus {
 }
 
 body {
-  overflow-x: hidden;
-  /* Prevent scroll on narrow devices */
-  padding-top: 56px;
-  background-color: #fff;
+  padding-top: 3.5rem;
 }
 
 @media (max-width: 991.98px) {
@@ -14333,5 +14330,20 @@ body {
   color: #777;
   font-size: 12px;
   line-height: 22px;
+}
+
+.hero-image {
+  background: url(/img/footbridge.jpg);
+  /* The image used */
+  background-color: #cccccc;
+  /* Used if the image is unavailable */
+  height: 500px;
+  /* You must set a specified height */
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
 }
 

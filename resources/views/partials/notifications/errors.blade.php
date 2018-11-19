@@ -1,4 +1,3 @@
-
 @if(count($errors))
 	<div class="alert alert-danger text-center" role="alert">
 		<ul>

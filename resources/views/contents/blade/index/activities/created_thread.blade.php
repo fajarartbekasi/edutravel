@@ -9,7 +9,7 @@
             <div class="post-meta">
                 <div class="asker-meta">
                     <span class="qa-message-what"></span>
-                    
+
                     <span class="qa-message-who">
                         <span class="qa-message-who-pad text-muted">started a new conversation </span>
                         <span class="qa-message-who-data">
@@ -29,10 +29,9 @@
     @endslot
 
     @slot('body')
-        <div class="qa-message-content text-dark">
+        <div class="qa-message-content text-white">
             {{ $activity->subject->body }}.
         </div>
     @endslot
 
 @endcomponent
-

@@ -3,29 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Activity\Activity;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-        
-    // }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(User $user)
     {
-
-         return view('welcome');
+        return view('home',[
+            'profileUser' => $user,
+             'activities'     => Activity::feed($user)
+        ]);
     }
+    public function show(User $user)
+   {
+       return view('home',[
+           'profileUser' => $user,
+            'activities'     => Activity::feed($user)
+       ]);
+
+   }
 }

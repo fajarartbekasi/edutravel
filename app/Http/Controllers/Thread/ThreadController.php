@@ -20,14 +20,14 @@ class ThreadController extends Controller
      * Display a listing of the resource.
      *
      * @param Channel $Channel
-     * 
+     *
      * @param ThreadFilters $filters
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Channel $channel, ThreadFilters $filters)
     {
-        
+
         $threads = $this->getThreads($channel, $filters);
 
         if (request()->wantsJson()) {
@@ -57,7 +57,6 @@ class ThreadController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-
                 'title' => 'required',
                 'channel_id' => 'required|exists:channels,id',
                 'body' => 'required'
@@ -65,7 +64,6 @@ class ThreadController extends Controller
         );
 
         $thread = Thread::create([
-
             'user_id'       => auth()->id(),
             'channel_id'    => request('channel_id'),
             'title'         => request('title'),
@@ -87,7 +85,7 @@ class ThreadController extends Controller
     public function show($channel,Thread $thread)
     {
 
-      
+
         return view('contents.discussions.show',compact('thread'));
     }
 
@@ -121,9 +119,9 @@ class ThreadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($channel, Thread $thread)
-    {   
+    {
 
-       
+
         $this->authorize('update', $thread);
 
         $thread->delete();
@@ -135,7 +133,7 @@ class ThreadController extends Controller
 
         return redirect('/threads');
     }
-    
+
     protected function getThreads(Channel $channel, ThreadFilters $filters)
     {
         $threads = Thread::latest()->filter($filters);

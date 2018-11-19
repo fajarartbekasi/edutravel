@@ -10,8 +10,10 @@
 
           <p class="text-center text-md-left">
           <img class="media-object rounded-circle" src="{{ asset('img/avatars/user.png') }}" width="30px" hight="30px">
-            Chaerul Fajar Subhi Develope |
-            © 2018 Copyright:
+          <strong class="text-muted">
+            By : Chaerul Fajar Subhi |
+            2018 :
+          </strong>
             <a href="https://mdbootstrap.com/bootstrap-tutorial/">
               <strong> EduTravel</strong>
             </a>

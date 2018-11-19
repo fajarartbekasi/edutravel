@@ -8,9 +8,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  overflow-x: hidden; /* Prevent scroll on narrow devices */
-  padding-top: 56px;
-  background-color: #fff;
+  padding-top: 3.5rem;
 }
 
 @media (max-width: 991.98px) {
@@ -98,7 +96,7 @@ body {
     }
     .content {
       padding: 0;
-  
+
       .header {
         font-size: 18px;
         font-weight: bold;
@@ -112,11 +110,11 @@ body {
       }
     }
   }
-  
+
   .profile {
     margin-top: 40px;
     font-weight: bold;
-  
+
     .cover-avatar {
       position: relative;
     }
@@ -129,8 +127,8 @@ body {
       opacity: 0;
       cursor: pointer;
     }
-  
-  
+
+
     .cover-avatar .avatar {
       width: 150px !important;
       height: 150px;
@@ -146,7 +144,7 @@ body {
       transform: rotateZ(360deg);
     }
   }
-  
+
   @media only screen and (max-width: 990px) {
     .profile .cover-avatar input {
       left: 40%;
@@ -155,19 +153,19 @@ body {
       margin-left: 30px;
     }
   }
-  
+
   @media only screen and (max-width: 568px) {
     .profile .cover-avatar input {
       left: 30%;
     }
   }
-  
+
   @media only screen and (min-width: 568px) and (max-width: 767px) {
     .profile .cover-avatar input {
       left: 35%;
     }
   }
-  
+
   @media only screen and (max-width: 767px) {
     .search {
       display: none;
@@ -178,7 +176,7 @@ body {
       text-align: center;
     }
   }
-  
+
   @media only screen and (min-width: 767px) and (max-width: 990px) {
     .col-sm-5 {
       width: 35% !important;
@@ -187,14 +185,14 @@ body {
       margin-top: 0 !important;
     }
   }
-  
+
   #validate-errors {
     color: #c00;
   }
-  
-  
+
+
   /*PROFILE CSS END*/
- 
+
   // Discussion Index
   .discussion {
     .media:last-child {
@@ -234,18 +232,18 @@ body {
       margin-bottom: -1px;
     }
   }
-  
+
   @media screen and (max-width: 767px) {
     .discussion .media-left {
       display: none;
     }
   }
-  
+
   // Discussion Show
   .edit-discuss {
     margin-top: 10px;
   }
-  
+
   .discuss-show {
     i {
       margin-right: 5px;
@@ -691,4 +689,13 @@ text-align: right;
 color: #777;
 font-size: 12px;
 line-height: 22px;
+}
+
+.hero-image {
+background: url(/img/footbridge.jpg); /* The image used */
+background-color: #cccccc; /* Used if the image is unavailable */
+height: 500px; /* You must set a specified height */
+background-position: center; /* Center the image */
+background-repeat: no-repeat; /* Do not repeat the image */
+background-size: cover; /* Resize the background image to cover the entire container */
 }

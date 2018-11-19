@@ -3,14 +3,12 @@
     <div class="message-item" id="m16">
         <div class="message-inner">
             <div class="message-head clearfix">
-                
                 {{ $heading }}
-                
             </div>
-            {{ $body }}
-           
+            <p class="text-white">
+                {{ $body }}
+            </p>
         </div>
     </div>
 
 </div>
-

@@ -13,20 +13,13 @@ class CreateThreadTest extends TestCase
     /** @test */
     function guests_may_not_created_threads()
     {
-
         $this->withExceptionHandling();
-        
-
         $this->get('/threads/create')
              ->assertRedirect('/login');
-
         $this->post('/threads')
              ->assertRedirect('/login');
-
-
-        
     }
-   
+
     /** @test */
     function an_authenticated_user_can_create_new_forum_thread()
     {
@@ -44,12 +37,8 @@ class CreateThreadTest extends TestCase
     /** @test */
     function a_thread_require_a_title()
     {
-
         $this->publishThread(['title'=>null])
              ->assertSessionHasErrors('title');
-
-       
-       
     }
     /** @test */
     function unauthorized_user_may_not_delete_threads()
@@ -65,7 +54,7 @@ class CreateThreadTest extends TestCase
         $this->delete($thread->path())->assertStatus(403);
 
     }
-    
+
     /** @test */
     function authorized_user_can_deleted_threads()
     {
@@ -85,7 +74,7 @@ class CreateThreadTest extends TestCase
        $this->assertEquals(0, \App\Models\Activity\Activity::count());
 
     }
-    
+
     /** @test */
     function a_thread_require_a_channel_id()
     {
@@ -104,12 +93,8 @@ class CreateThreadTest extends TestCase
     /** @test */
     function a_thread_require_a_body()
     {
-
         $this->publishThread(['body' => null])
             ->assertSessionHasErrors('body');
-
-
-
     }
 
     public function publishThread($overrides = [])

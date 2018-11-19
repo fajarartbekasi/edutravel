@@ -63954,56 +63954,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: ['reply'],
-
     data: function data() {
-
         return {
-
             count: this.reply.favoritesCount,
             active: this.reply.isFavorited
-
         };
     },
 
     computed: {
         classes: function classes() {
-
-            return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3' : 'btn-outline-secondary btn-sm mr-3'];
+            return ['btn', this.active ? 'btn-outline-primary btn-block mr-3' : 'btn-outline-secondary btn-block mr-3'];
         },
         endpoint: function endpoint() {
-
             return '/replies/' + this.reply.id + '/favorites';
         }
     },
     methods: {
         toggle: function toggle() {
-
             this.active ? this.destroy() : this.create();
         },
         create: function create() {
-
             axios.post(this.endpoint);
-
             this.active = true;
-
             this.count++;
         },
         destroy: function destroy() {
-
             axios.delete(this.endpoint);
-
             this.active = false;
-
             this.count--;
         }
     }
-
 });
 
 /***/ }),
@@ -64489,39 +64472,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: ['message'],
-
     data: function data() {
         return {
             body: '',
             show: false
-
         };
     },
     created: function created() {
         var _this = this;
 
         if (this.message) {
-
             this.flash(this.message);
         }
-
         window.events.$on('flash', function (message) {
             return _this.flash(message);
         });
     },
 
-
     methods: {
         flash: function flash(message) {
             this.body = message;
             this.show = true;
-
             this.hide();
         },
         hide: function hide() {
@@ -64532,7 +64506,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, 3000);
         }
     }
-
 });
 
 /***/ }),
@@ -64560,7 +64533,7 @@ var render = function() {
       },
       [
         _c("strong", [_vm._v("Atention Pleas!")]),
-        _vm._v(" " + _vm._s(_vm.body) + ".\n         \n     ")
+        _vm._v(" " + _vm._s(_vm.body) + ".\n     ")
       ]
     )
   ])
@@ -64616,37 +64589,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-
         return {
-
             body: ''
-
         };
     },
 
-
     computed: {
         signedIn: function signedIn() {
-
             return window.App.signedIn;
         }
     },
@@ -64657,16 +64609,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post(location.pathname + '/replies', { body: this.body }).then(function (_ref) {
                 var data = _ref.data;
 
-
                 _this.body = '';
-
                 flash('Youre reply hasben published now.');
-
                 _this.$emit('created', data);
             });
         }
     }
-
 });
 
 /***/ }),
@@ -64677,38 +64625,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.signedIn
-      ? _c("div", [
-          _c("div", { staticClass: "form-group" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.body,
-                  expression: "body"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                name: "body",
-                id: "",
-                cols: "30",
-                rows: "10",
-                placeholder: "You all will listen to answer....",
-                required: ""
-              },
-              domProps: { value: _vm.body },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+  return _vm.signedIn
+    ? _c("div", [
+        _c("div", { staticClass: "comments" }, [
+          _c("div", { staticClass: "comment-wrap" }, [
+            _c("div", { staticClass: "comment-block" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body"
                   }
-                  _vm.body = $event.target.value
+                ],
+                attrs: {
+                  name: "",
+                  id: "",
+                  cols: "30",
+                  rows: "3",
+                  placeholder: "You all will listen to answer....",
+                  required: ""
+                },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  }
                 }
-              }
-            })
+              })
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "float-right" }, [
@@ -64723,8 +64672,8 @@ var render = function() {
             )
           ])
         ])
-      : _c("div", [_vm._m(0)])
-  ])
+      ])
+    : _c("div", [_vm._m(0)])
 }
 var staticRenderFns = [
   function() {
@@ -64732,10 +64681,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "float-left" }, [
-      _c("a", { attrs: { href: "/login" } }, [
-        _vm._v("\n\n                Please sign in \n\n            ")
-      ]),
-      _vm._v("\n\n            to participate in this discussion.\n\n        ")
+      _c("a", { attrs: { href: "/login" } }, [_vm._v("Please sign in")]),
+      _vm._v("\n        to participate in this discussion.\n    ")
     ])
   }
 ]
@@ -64816,58 +64763,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: ['dataSet'],
-
     data: function data() {
-
         return {
-
             page: 1,
-
             prevUrl: false,
-
             nextUrl: false
         };
     },
 
-
     watch: {
         dataSet: function dataSet() {
-
             this.page = this.dataSet.current_page;
-
             this.prevUrl = this.dataSet.prev_page_url;
-
             this.nextUrl = this.dataSet.next_page_url;
         },
         page: function page() {
-
             this.broadcast().updateUrl();
         }
     },
-
     computed: {
         shouldPaginate: function shouldPaginate() {
-
             return !!this.prevUrl || !!this.nextUrl;
         }
     },
-
     methods: {
         broadcast: function broadcast() {
-
             return this.$emit('changed', this.page);
         },
         updateUrl: function updateUrl() {
-
             history.pushState(null, null, '?page=' + this.page);
         }
     }
-
 });
 
 /***/ }),
@@ -64983,61 +64912,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: ['data'],
-
     components: { Reply: __WEBPACK_IMPORTED_MODULE_0__Reply_vue___default.a, NewReply: __WEBPACK_IMPORTED_MODULE_1__NewReply_vue___default.a },
-
     mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_collection_js__["a" /* default */]],
-
     data: function data() {
-
         return { dataSet: false };
     },
     created: function created() {
-
         this.fetch();
     },
 
     methods: {
         fetch: function fetch(page) {
-
             axios.get(this.url(page)).then(this.refresh);
         },
         url: function url(page) {
-
             if (!page) {
-
                 var query = location.search.match(/page=(\d+)/);
-
                 page = query ? query[1] : 1;
             }
-
             return location.pathname + '/replies?page=' + page;
         },
         refresh: function refresh(_ref) {
             var data = _ref.data;
 
-
             this.dataSet = data;
             this.items = data.data;
-
             window.scrollTo(0, 0);
         }
     }
@@ -65095,49 +65000,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: ['data'],
-
     components: { Favorite: __WEBPACK_IMPORTED_MODULE_0__Favorite_vue___default.a },
-
     data: function data() {
-
         return {
-
             editting: false,
             id: this.data.id,
             body: this.data.body
-
         };
     },
 
     computed: {
         ago: function ago() {
-
             return __WEBPACK_IMPORTED_MODULE_1_moment___default()(this.data.created_at).fromNow() + '....';
         },
         signedIn: function signedIn() {
-
             return window.App.signedIn;
         },
         canUpdate: function canUpdate() {
@@ -65150,24 +65031,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         update: function update() {
-
             axios.patch('/replies/' + this.data.id, {
-
                 body: this.body
             });
-
             this.editting = false;
-
             flash('Update');
         },
         destroy: function destroy() {
-
             axios.delete('/replies/' + this.data.id);
-
             this.$emit('deleted', this.data.id);
         }
     }
-
 });
 
 /***/ }),
@@ -65447,118 +65321,122 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "reply-" + _vm.id } }, [
-    _c("div", { staticClass: "my-3 p-3 bg-white rounded shadow-sm" }, [
-      _vm.signedIn
-        ? _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
-        : _vm._e(),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "/profiles/" + _vm.data.owner.name } }, [
-        _c("h5", {
-          staticClass: "card-title pb-2 mb-0 text-info font-weight-bold",
-          domProps: { textContent: _vm._s(_vm.data.owner.name) }
-        })
-      ]),
-      _vm._v(" "),
-      _c("strong", { staticClass: "text-info font-weight-bold" }, [
-        _c("strong", { staticClass: "text-muted" }, [
-          _c("span", {
-            staticClass: "font-weight-bold",
-            domProps: { textContent: _vm._s(_vm.ago) }
-          }),
-          _vm._v(" . \n            ")
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.editting
-        ? _c("div", [
-            _c("div", { staticClass: "form-group" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { name: "", id: "" },
-                domProps: { value: _vm.body },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.body = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-secondary ",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    _vm.editting = false
-                  }
-                }
-              },
-              [_vm._v("Cancel")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-info",
-                attrs: { type: "button" },
-                on: { click: _vm.update }
-              },
-              [_vm._v("Update youre reply")]
-            )
-          ])
-        : _c("p", {
-            staticClass: "mb-0 text-muted",
-            domProps: { textContent: _vm._s(_vm.body) }
-          }),
-      _vm._v(" "),
-      _c("div", { staticClass: "py-3 text-md-left" }, [
-        _vm.canUpdate
-          ? _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-info btn-sm",
-                  on: {
-                    click: function($event) {
-                      _vm.editting = true
-                    }
-                  }
-                },
-                [
-                  _c("span", { staticClass: "fa fa-pencil fa fa-1x " }, [
-                    _vm._v(" Edit reply")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-danger btn-sm",
-                  attrs: { type: "button" },
-                  on: { click: _vm.destroy }
-                },
-                [
-                  _c("span", { staticClass: "fa fa-trash fa fa-1x " }, [
-                    _vm._v(" Deleted reply")
-                  ])
-                ]
-              )
+    _c("div", { staticClass: "my-3 p-3 rounded" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _vm.signedIn
+            ? _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
+            : _vm._e(),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "/profiles/" + _vm.data.owner.name } }, [
+            _c("h5", {
+              staticClass: "card-title pb-2 mb-0 text-info font-weight-bold",
+              domProps: { textContent: _vm._s(_vm.data.owner.name) }
+            })
+          ]),
+          _vm._v(" "),
+          _c("strong", { staticClass: "text-info font-weight-bold" }, [
+            _c("strong", { staticClass: "text-muted" }, [
+              _c("span", {
+                staticClass: "font-weight-bold",
+                domProps: { textContent: _vm._s(_vm.ago) }
+              }),
+              _vm._v(" .\n                ")
             ])
-          : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.editting
+            ? _c("div", [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.body,
+                        expression: "body"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "", id: "" },
+                    domProps: { value: _vm.body },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.body = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-secondary ",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.editting = false
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "button" },
+                    on: { click: _vm.update }
+                  },
+                  [_vm._v("Update youre reply")]
+                )
+              ])
+            : _c("p", {
+                staticClass: "mb-0 text-muted",
+                domProps: { textContent: _vm._s(_vm.body) }
+              }),
+          _vm._v(" "),
+          _c("div", { staticClass: "py-3 text-md-left" }, [
+            _vm.canUpdate
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-info btn-sm",
+                      on: {
+                        click: function($event) {
+                          _vm.editting = true
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "fa fa-pencil fa fa-1x " }, [
+                        _vm._v(" Edit reply")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-danger btn-sm",
+                      attrs: { type: "button" },
+                      on: { click: _vm.destroy }
+                    },
+                    [
+                      _c("span", { staticClass: "fa fa-trash fa fa-1x " }, [
+                        _vm._v(" Deleted reply")
+                      ])
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
       ])
     ])
   ])
@@ -65580,25 +65458,18 @@ if (false) {
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
-
         return {
-
             items: []
         };
     },
 
-
     methods: {
         add: function add(item) {
-
             this.items.push(item);
-
             this.$emit('added');
         },
         remove: function remove(index) {
-
             this.items.splice(index, 1);
-
             this.$emit('removed');
         }
     }
@@ -65662,31 +65533,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: ['active'],
-
     computed: {
         classes: function classes() {
-
             return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3' : 'btn-outline-secondary btn-sm mr-3'];
         }
     },
-
     methods: {
         subscribe: function subscribe() {
-
             axios[this.active ? 'delete' : 'post'](location.pathname + '/subscriptions');
-
             this.active = !this.active;
-
             flash('Subscribe');
         }
     }
-
 });
 
 /***/ }),
@@ -65786,14 +65647,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-
         return { notifications: false };
     },
     created: function created() {
@@ -65804,14 +65660,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
     },
 
-
     methods: {
         markAsRead: function markAsRead(notification) {
-
             axios.delete('/profiles/' + window.App.user.name + '/notifications/' + notification.id);
         }
     }
-
 });
 
 /***/ }),
@@ -65929,20 +65782,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: ['initialRepliesCount'],
-
     components: { Replies: __WEBPACK_IMPORTED_MODULE_0__components_Replies_vue___default.a, SubscribeButton: __WEBPACK_IMPORTED_MODULE_1__components_SubscribeButton_vue___default.a },
-
     data: function data() {
-
         return {
-
             repliesCount: this.initialRepliesCount
-
         };
     }
 });

@@ -1,69 +1,42 @@
 <template>
     <div class="float-right my-2 my-lg-0">
         <button type="submit" :class="classes" @click="toggle">
-
             <span class="fa fa-heart fa fa-1x mr-3"> Favorite</span>
             <span v-text="count"></span>
-
         </button>
     </div>
 </template>
 <script>
     export default {
-
         props: ['reply'],
-
         data() {
-
             return {
-
                 count: this.reply.favoritesCount,
                 active: this.reply.isFavorited
-
             }
-
         },
         computed: {
             classes() {
-
-                return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3' : 'btn-outline-secondary btn-sm mr-3'];
-
+                return ['btn', this.active ? 'btn-outline-primary btn-block mr-3' : 'btn-outline-secondary btn-block mr-3'];
             },
             endpoint() {
-
                 return '/replies/' + this.reply.id +'/favorites';
-
             }
         },
         methods: {
-
             toggle() {
-                
                 this.active ? this.destroy() : this.create();
-                
             },
-
             create() {
-
                 axios.post(this.endpoint);
-
                 this.active = true;
-
                 this.count++;
-
             },
-
             destroy() {
-
                 axios.delete(this.endpoint);
-
                 this.active = false;
-
                 this.count--;
-
             }
-
         }
-        
     }
 </script>
