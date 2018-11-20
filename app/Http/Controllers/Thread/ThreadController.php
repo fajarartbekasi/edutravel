@@ -6,6 +6,7 @@ use App\User;
 use App\Channel;
 use App\Models\Thread\Thread;
 use App\Models\Reply\Reply;
+use Laravolt\Avatar\Avatar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\ThreadFilters;

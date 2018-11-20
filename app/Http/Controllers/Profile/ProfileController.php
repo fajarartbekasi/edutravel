@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Profile;
 
 use App\User;
 use App\Models\Activity\Activity;
+use Laravolt\Avatar\Avatar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

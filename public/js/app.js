@@ -63952,8 +63952,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['reply'],
@@ -63966,7 +63964,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         classes: function classes() {
-            return ['btn', this.active ? 'btn-outline-primary btn-block mr-3' : 'btn-outline-secondary btn-block mr-3'];
+            return ['btn', this.active ? 'btn-outline-primary  btn-sm subscribes' : 'btn-outline-secondary btn-sm subscribes'];
         },
         endpoint: function endpoint() {
             return '/replies/' + this.reply.id + '/favorites';
@@ -63997,23 +63995,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "float-right my-2 my-lg-0" }, [
-    _c(
-      "button",
-      {
-        class: _vm.classes,
-        attrs: { type: "submit" },
-        on: { click: _vm.toggle }
-      },
-      [
-        _c("span", { staticClass: "fa fa-heart fa fa-1x mr-3" }, [
-          _vm._v(" Favorite")
-        ]),
-        _vm._v(" "),
-        _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
-      ]
-    )
-  ])
+  return _c(
+    "button",
+    {
+      class: _vm.classes,
+      attrs: { type: "submit" },
+      on: { click: _vm.toggle }
+    },
+    [
+      _c("span", { staticClass: "fa fa-heart fa fa-1x mr-3" }, [
+        _vm._v(" Favorite")
+      ]),
+      _vm._v(" "),
+      _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -64588,7 +64584,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -64627,55 +64622,66 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.signedIn
     ? _c("div", [
-        _c("div", { staticClass: "comments" }, [
-          _c("div", { staticClass: "comment-wrap" }, [
-            _c("div", { staticClass: "comment-block" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body"
-                  }
-                ],
-                attrs: {
-                  name: "",
-                  id: "",
-                  cols: "30",
-                  rows: "3",
-                  placeholder: "You all will listen to answer....",
-                  required: ""
-                },
-                domProps: { value: _vm.body },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.body = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]),
+        _c("div", { staticClass: "comment-wrap" }, [
+          _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "float-right" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-primary",
-                attrs: { type: "submit" },
-                on: { click: _vm.addReply }
+          _c("div", { staticClass: "comment-block" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.body,
+                  expression: "body"
+                }
+              ],
+              attrs: {
+                name: "",
+                id: "",
+                cols: "100",
+                rows: "3",
+                placeholder: "You all will listen to answer....",
+                required: ""
               },
-              [_vm._v("\n                Post Your Reply\n            ")]
-            )
+              domProps: { value: _vm.body },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.body = $event.target.value
+                }
+              }
+            })
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "float-right" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-primary",
+              attrs: { type: "submit" },
+              on: { click: _vm.addReply }
+            },
+            [_vm._v("\n            Post Your Reply\n        ")]
+          )
         ])
       ])
-    : _c("div", [_vm._m(0)])
+    : _c("div", [_vm._m(1)])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "photo" }, [
+      _c("img", {
+        staticClass: "media-object rounded-circle ml-3 mr-3 mb-3",
+        attrs: { src: "/../../img/318585.png", height: "30", width: "30" }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -64808,7 +64814,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.shouldPaginate
-    ? _c("ul", { staticClass: "pagination" }, [
+    ? _c("ul", { staticClass: "pagination justify-content-end" }, [
         _c(
           "li",
           {
@@ -64826,7 +64832,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "page-link",
+                staticClass: "page-link mr-3",
                 attrs: { href: "#", "aria-label": "Previous", rel: "prev" },
                 on: {
                   click: function($event) {
@@ -64861,7 +64867,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "page-link",
+                staticClass: "page-link mr-3",
                 attrs: { href: "#", "aria-label": "Next", rel: "next" },
                 on: {
                   click: function($event) {
@@ -64902,6 +64908,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewReply_vue__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewReply_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__NewReply_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_collection_js__ = __webpack_require__(189);
+//
+//
 //
 //
 //
@@ -64958,6 +64966,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Favorite_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Favorite_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -65321,118 +65336,133 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "reply-" + _vm.id } }, [
-    _c("div", { staticClass: "my-3 p-3 rounded" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _vm.signedIn
-            ? _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
-            : _vm._e(),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "/profiles/" + _vm.data.owner.name } }, [
-            _c("h5", {
-              staticClass: "card-title pb-2 mb-0 text-info font-weight-bold",
-              domProps: { textContent: _vm._s(_vm.data.owner.name) }
-            })
-          ]),
-          _vm._v(" "),
-          _c("strong", { staticClass: "text-info font-weight-bold" }, [
-            _c("strong", { staticClass: "text-muted" }, [
-              _c("span", {
-                staticClass: "font-weight-bold",
-                domProps: { textContent: _vm._s(_vm.ago) }
-              }),
-              _vm._v(" .\n                ")
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.editting
-            ? _c("div", [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.body,
-                        expression: "body"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { name: "", id: "" },
-                    domProps: { value: _vm.body },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.body = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-secondary ",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.editting = false
-                      }
-                    }
-                  },
-                  [_vm._v("Cancel")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-info",
-                    attrs: { type: "button" },
-                    on: { click: _vm.update }
-                  },
-                  [_vm._v("Update youre reply")]
-                )
-              ])
-            : _c("p", {
-                staticClass: "mb-0 text-muted",
-                domProps: { textContent: _vm._s(_vm.body) }
-              }),
-          _vm._v(" "),
-          _c("div", { staticClass: "py-3 text-md-left" }, [
-            _vm.canUpdate
+    _c("div", { staticClass: "comment pt-3" }, [
+      _c("div", { staticClass: "comment-wrap" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "box shadow" }, [
+          _c("div", { staticClass: "comment-block" }, [
+            _vm.editting
               ? _c("div", [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.body,
+                          expression: "body"
+                        }
+                      ],
+                      staticClass: "form-control alert alert-danger",
+                      attrs: { name: "", id: "" },
+                      domProps: { value: _vm.body },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.body = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-outline-info btn-sm",
+                      staticClass: "btn btn-outline-secondary ",
+                      attrs: { type: "button" },
                       on: {
                         click: function($event) {
-                          _vm.editting = true
+                          _vm.editting = false
                         }
                       }
                     },
-                    [
-                      _c("span", { staticClass: "fa fa-pencil fa fa-1x " }, [
-                        _vm._v(" Edit reply")
-                      ])
-                    ]
+                    [_vm._v("Cancel")]
                   ),
                   _vm._v(" "),
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-outline-danger btn-sm",
+                      staticClass: "btn btn-outline-info",
                       attrs: { type: "button" },
-                      on: { click: _vm.destroy }
+                      on: { click: _vm.update }
                     },
-                    [
-                      _c("span", { staticClass: "fa fa-trash fa fa-1x " }, [
-                        _vm._v(" Deleted reply")
-                      ])
-                    ]
+                    [_vm._v("Update youre reply")]
                   )
+                ])
+              : _c("p", {
+                  staticClass: "comment-text alert alert-info",
+                  domProps: { textContent: _vm._s(_vm.body) }
+                })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "bottom-comment" }, [
+            _c("div", { staticClass: "comment-date" }, [
+              _c("a", { attrs: { href: "/profiles/" + _vm.data.owner.name } }, [
+                _c("strong", {
+                  staticClass: "text-info font-weight-bold",
+                  domProps: { textContent: _vm._s(_vm.data.owner.name) }
+                })
+              ]),
+              _vm._v(" "),
+              _c("strong", {
+                staticClass: "text-muted",
+                domProps: { textContent: _vm._s(_vm.ago) }
+              })
+            ]),
+            _vm._v(" "),
+            _vm.canUpdate
+              ? _c("div", [
+                  _c("ul", { staticClass: "comment-actions" }, [
+                    _vm.signedIn
+                      ? _c(
+                          "div",
+                          [
+                            _c("favorite", { attrs: { reply: _vm.data } }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-outline-info btn-sm complain",
+                                on: {
+                                  click: function($event) {
+                                    _vm.editting = true
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "fa fa-pencil fa fa-1x " },
+                                  [_vm._v(" Edit reply")]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-outline-danger btn-sm reply",
+                                attrs: { type: "button" },
+                                on: { click: _vm.destroy }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "fa fa-trash fa fa-1x " },
+                                  [_vm._v(" Deleted reply")]
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
                 ])
               : _vm._e()
           ])
@@ -65441,7 +65471,19 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "photo" }, [
+      _c("img", {
+        staticClass: "media-object rounded-circle ml-3 mr-3 mb-3",
+        attrs: { src: "/../../img/318585.png", height: "30", width: "30" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -65504,12 +65546,19 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _c("paginator", {
-        attrs: { dataSet: _vm.dataSet },
-        on: { changed: _vm.fetch }
-      }),
-      _vm._v(" "),
-      _c("new-reply", { on: { created: _vm.add } })
+      _c(
+        "nav",
+        { attrs: { "aria-label": "Page navigation example" } },
+        [
+          _c("new-reply", { on: { created: _vm.add } }),
+          _vm._v(" "),
+          _c("paginator", {
+            attrs: { dataSet: _vm.dataSet },
+            on: { changed: _vm.fetch }
+          })
+        ],
+        1
+      )
     ],
     2
   )

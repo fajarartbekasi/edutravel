@@ -4,8 +4,10 @@
             <reply :data="reply" @deleted="remove(index)">
             </reply>
         </div>
-        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
-        <new-reply @created="add"></new-reply>
+        <nav aria-label="Page navigation example">
+            <new-reply @created="add"></new-reply>
+            <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+        </nav>
     </div>
 </template>
 <script>

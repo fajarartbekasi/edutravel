@@ -1,11 +1,8 @@
-
 @component('contents.blade.index.activities.activity')
-
     @slot('heading')
         <div class="user-detail">
             <a href="{{ $activity->subject->favorited->path() }}">
                 <h5 class="handel text-info">
-
                     {{ $profileUser->name }}
                 </h5>
             </a>
@@ -25,7 +22,7 @@
     @endslot
 
     @slot('body')
-        <div class="qa-message-content text-white">
+        <div class="qa-message-content text-muted">
             {{ $activity->subject->favorited->body }}.
         </div>
     @endslot

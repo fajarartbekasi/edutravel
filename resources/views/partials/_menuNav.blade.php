@@ -10,13 +10,13 @@
             </ul>
             <ul class="navbar-nav text-muted">
                 <user-notifications></user-notifications>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown mr-3">
                     <span class="nav-link dropdown-toggle fa fa-user text-muted"
                         id="dropdown01"
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">
-                    &nbsp; My EduTravels
+                        My EduTravels
                     </span>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
                         <a href="{{ route('logout') }}" class="dropdown-item fa fa-sign-out text-muted" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

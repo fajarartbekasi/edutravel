@@ -5,7 +5,7 @@
             <div class="message-head clearfix">
                 {{ $heading }}
             </div>
-            <p class="text-white">
+            <p class="text-muted">
                 {{ $body }}
             </p>
         </div>

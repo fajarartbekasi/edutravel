@@ -1,10 +1,8 @@
 <template>
-    <div class="float-right my-2 my-lg-0">
-        <button type="submit" :class="classes" @click="toggle">
-            <span class="fa fa-heart fa fa-1x mr-3"> Favorite</span>
-            <span v-text="count"></span>
-        </button>
-    </div>
+    <button type="submit" :class="classes" @click="toggle">
+        <span class="fa fa-heart fa fa-1x mr-3"> Favorite</span>
+        <span v-text="count"></span>
+    </button>
 </template>
 <script>
     export default {
@@ -17,7 +15,7 @@
         },
         computed: {
             classes() {
-                return ['btn', this.active ? 'btn-outline-primary btn-block mr-3' : 'btn-outline-secondary btn-block mr-3'];
+                return ['btn', this.active ? 'btn-outline-primary  btn-sm subscribes' : 'btn-outline-secondary btn-sm subscribes'];
             },
             endpoint() {
                 return '/replies/' + this.reply.id +'/favorites';

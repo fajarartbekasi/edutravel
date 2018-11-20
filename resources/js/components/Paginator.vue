@@ -1,14 +1,14 @@
 <template>
-    <ul class="pagination" v-if="shouldPaginate">
+    <ul class="pagination justify-content-end" v-if="shouldPaginate">
         <li class="page-item" v-show="prevUrl">
-        <a class="page-link" href="#" aria-label="Previous" rel="prev" @click.prevent="page--">
-            <span aria-hidden="true">&laquo; Previous</span>
-        </a>
+            <a class="page-link mr-3" href="#" aria-label="Previous" rel="prev" @click.prevent="page--">
+                <span aria-hidden="true">&laquo; Previous</span>
+            </a>
         </li>
         <li class="page-item" v-show="nextUrl">
-        <a class="page-link" href="#" aria-label="Next" rel="next" @click.prevent="page++">
-            <span aria-hidden="true">Next &raquo;</span>
-        </a>
+            <a class="page-link mr-3" href="#" aria-label="Next" rel="next" @click.prevent="page++">
+                <span aria-hidden="true">Next &raquo;</span>
+            </a>
         </li>
     </ul>
 </template>

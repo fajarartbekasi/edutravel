@@ -29,7 +29,7 @@
     @endslot
 
     @slot('body')
-        <div class="qa-message-content text-white">
+        <div class="qa-message-content text-muted">
             {{ $activity->subject->body }}.
         </div>
     @endslot

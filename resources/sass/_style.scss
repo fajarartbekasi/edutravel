@@ -5,21 +5,31 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 html,
 body {
-  background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100%;
+  background: #f6f6f6;
   font-family: 'Numans', sans-serif;
   overflow-x: hidden; /* Prevent scroll on narrow devices */
   padding-top: 30px;
   margin:0;
   padding:0;
 }
-
-
+.main{
+  background: #f8f9fa;
+}
+.nav-tabs{
+  border: none;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  border: 0px solid transparent;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  padding: 5px;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  padding-left: 18px;
+  padding-right: 18px;
+}
 @media (max-width: 991.98px) {
   .offcanvas-collapse {
     position: fixed;
@@ -193,6 +203,12 @@ font-size: 12px;
 line-height: 22px;
 }
 
+.jumbotron{
+  padding: 2rem 1rem;
+  margin-bottom: -2.5rem;
+  background-color: #e9ecef;
+
+}
 .hero-image {
   background: url(/img/footbridge.jpg); /* The image used */
   background-color: #cccccc; /* Used if the image is unavailable */
@@ -400,7 +416,8 @@ line-height: 22px;
     display: table-cell;
     vertical-align: top;
     border-radius: 0.1875rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    border-color: #007bff;
+    box-shadow: 5 5px 5px 5 rgba(0, 0, 0, 0.08);
   }
   .comment-block textarea {
     width: 100%;
@@ -433,6 +450,10 @@ line-height: 22px;
     border-right: 1px solid #e1e5eb;
   }
   .comment-actions li.reply {
+    padding-left: 0.75rem;
+    padding-right: 0.125rem;
+  }
+  .comment-actions li.subscribes {
     padding-left: 0.75rem;
     padding-right: 0.125rem;
   }

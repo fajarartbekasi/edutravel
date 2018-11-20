@@ -1,29 +1,28 @@
 <template>
     <div v-if="signedIn">
-        <div class="comments">
-
-            <div class="comment-wrap">
-                <div class="comment-block">
-
-                    <textarea name=""
-                            id=""
-                            cols="30"
-                            rows="3"
-                            placeholder="You all will listen to answer...."
-                            required
-                            v-model="body"
-                    >
-                    </textarea>
-                </div>
+        <div class="comment-wrap">
+            <div class="photo">
+                <img src="/../../img/318585.png" class="media-object rounded-circle ml-3 mr-3 mb-3" height="30" width="30">
             </div>
-            <div class="float-right">
-                <button type="submit"
-                        class="btn btn-outline-primary"
-                        @click="addReply"
+            <div class="comment-block">
+                <textarea name=""
+                        id=""
+                        cols="100"
+                        rows="3"
+                        placeholder="You all will listen to answer...."
+                        required
+                        v-model="body"
                 >
-                    Post Your Reply
-                </button>
+                </textarea>
             </div>
+        </div>
+        <div class="float-right">
+            <button type="submit"
+                    class="btn btn-outline-primary"
+                    @click="addReply"
+            >
+                Post Your Reply
+            </button>
         </div>
     </div>
     <div v-else>

@@ -2,10 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     @include('layouts.components.head')
     </head>
-    <body >
+    <body class="main">
         <div id="app">
                 @include('partials.nav')
-            <main role="main">
+            <main role="main" class="main">
                 @include('partials.notifications.errors')
                 <div id="flash-msg">
                 </div>

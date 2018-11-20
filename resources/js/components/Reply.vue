@@ -1,37 +1,44 @@
 <template>
     <div :id="'reply-'+id" >
-        <div class="my-3 p-3 rounded">
-            <div class="card">
-                <div class="card-body">
-                    <div v-if="signedIn">
-                    <favorite :reply="data" > </favorite>
+        <div class="comment pt-3">
+            <div class="comment-wrap">
+                <div class="photo">
+                    <img src="/../../img/318585.png"
+                        class="media-object rounded-circle ml-3 mr-3 mb-3" height="30" width="30">
                 </div>
-                <a :href="'/profiles/'+data.owner.name" >
-                    <h5 class="card-title pb-2 mb-0 text-info font-weight-bold" v-text="data.owner.name"> </h5>
-                </a>
-                <strong class="text-info font-weight-bold">
-                    <strong class="text-muted">
-                        <span v-text="ago" class="font-weight-bold"></span> .
-                    </strong>
-                </strong>
-                <div v-if="editting">
-                    <div class="form-group">
-                        <textarea name="" id="" class="form-control" v-model="body">
-                        </textarea>
+                <div class="box shadow">
+                    <div class="comment-block">
+                        <div v-if="editting">
+                            <div class="form-group">
+                            <textarea name="" id="" class="form-control alert alert-danger" v-model="body">
+                            </textarea>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary " @click="editting = false">Cancel</button>
+                        <button type="button" class="btn btn-outline-info" @click="update">Update youre reply</button>
                     </div>
-                    <button type="button" class="btn btn-outline-secondary " @click="editting = false">Cancel</button>
-                    <button type="button" class="btn btn-outline-info" @click="update">Update youre reply</button>
+                    <p class="comment-text alert alert-info" v-else v-text="body">
+
+                    </p>
                 </div>
-                <p class="mb-0 text-muted"  v-else v-text="body">
-                </p>
-                <div class="py-3 text-md-left">
+                <div class="bottom-comment">
+                    <div class="comment-date">
+                        <a :href="'/profiles/'+data.owner.name" >
+                            <strong class="text-info font-weight-bold" v-text="data.owner.name"> </strong>
+                        </a>
+                        <strong class="text-muted" v-text="ago" ></strong>
+                    </div>
                     <div v-if="canUpdate">
-                        <button class="btn btn-outline-info btn-sm"  @click="editting = true">
-                            <span class="fa fa-pencil fa fa-1x "> Edit reply</span>
-                        </button>
-                        <button type="button" class="btn btn-outline-danger btn-sm" @click="destroy">
-                            <span class="fa fa-trash fa fa-1x "> Deleted reply</span>
-                        </button>
+                        <ul class="comment-actions">
+                            <div v-if="signedIn">
+                                <favorite :reply="data" > </favorite>
+                                <button class="btn btn-outline-info btn-sm complain"  @click="editting = true">
+                                    <span class="fa fa-pencil fa fa-1x "> Edit reply</span>
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm reply" @click="destroy">
+                                    <span class="fa fa-trash fa fa-1x "> Deleted reply</span>
+                                </button>
+                            </div>
+                        </ul>
                     </div>
                 </div>
                 </div>

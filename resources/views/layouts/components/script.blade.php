@@ -10,4 +10,5 @@
     $(function () {
         $('#flash-msg .alert').not('.alert-danger, .alert-important').delay(3000).slideUp(500);
     })
+
 </script>
