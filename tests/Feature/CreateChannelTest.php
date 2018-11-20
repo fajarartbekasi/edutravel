@@ -15,7 +15,7 @@ class CreateChannelTest extends TestCase
 
         $this->withExceptionHandling();
 
-        $this->get('channels/create')
+        $this->get('channels')
              ->assertRedirect('/login');
 
         $this->post('channels/store')

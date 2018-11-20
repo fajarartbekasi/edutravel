@@ -47,8 +47,8 @@ Route::get('/profiles/{user}/notifications', 'Profile\UserNotificationsControlle
 
 Route::delete('/profiles/{user}/notifications/{notification}', 'Profile\UserNotificationsController@destroy');
 
-Route::get('/channels', 'Channel\ChannelController@index');
-Route::get('/channels/create', 'Channel\ChannelController@create');
+
+Route::get('/channels', 'Channel\ChannelController@create');
 Route::post('/channels/store', 'Channel\ChannelController@store');
 
 
