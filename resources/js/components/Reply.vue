@@ -6,7 +6,7 @@
                     <img src="/../../img/318585.png"
                         class="media-object rounded-circle ml-3 mr-3 mb-3" height="30" width="30">
                 </div>
-                <div class="box shadow">
+
                     <div class="comment-block">
                         <div v-if="editting">
                             <div class="form-group">
@@ -19,7 +19,7 @@
                     <p class="comment-text alert alert-info" v-else v-text="body">
 
                     </p>
-                </div>
+
                 <div class="bottom-comment">
                     <div class="comment-date">
                         <a :href="'/profiles/'+data.owner.name" >
@@ -30,7 +30,6 @@
                     <div v-if="canUpdate">
                         <ul class="comment-actions">
                             <div v-if="signedIn">
-                                <favorite :reply="data" > </favorite>
                                 <button class="btn btn-outline-info btn-sm complain"  @click="editting = true">
                                     <span class="fa fa-pencil fa fa-1x "> Edit reply</span>
                                 </button>
@@ -40,6 +39,7 @@
                             </div>
                         </ul>
                     </div>
+                    <favorite :reply="data" > </favorite>
                 </div>
                 </div>
             </div>

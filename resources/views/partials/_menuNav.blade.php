@@ -8,7 +8,7 @@
                 <a class="nav-link text-muted" href="/channels">Channel</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-muted" href="">Event</a>
+                <a class="nav-link text-muted" href="/events">Event</a>
             </li>
         </ul>
         <ul class="navbar-nav text-muted">

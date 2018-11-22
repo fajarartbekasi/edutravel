@@ -65340,88 +65340,89 @@ var render = function() {
       _c("div", { staticClass: "comment-wrap" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "box shadow" }, [
-          _c("div", { staticClass: "comment-block" }, [
-            _vm.editting
-              ? _c("div", [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.body,
-                          expression: "body"
-                        }
-                      ],
-                      staticClass: "form-control alert alert-danger",
-                      attrs: { name: "", id: "" },
-                      domProps: { value: _vm.body },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.body = $event.target.value
-                        }
+        _c("div", { staticClass: "comment-block" }, [
+          _vm.editting
+            ? _c("div", [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.body,
+                        expression: "body"
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-secondary ",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.editting = false
+                    ],
+                    staticClass: "form-control alert alert-danger",
+                    attrs: { name: "", id: "" },
+                    domProps: { value: _vm.body },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
+                        _vm.body = $event.target.value
                       }
-                    },
-                    [_vm._v("Cancel")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-info",
-                      attrs: { type: "button" },
-                      on: { click: _vm.update }
-                    },
-                    [_vm._v("Update youre reply")]
-                  )
-                ])
-              : _c("p", {
-                  staticClass: "comment-text alert alert-info",
-                  domProps: { textContent: _vm._s(_vm.body) }
-                })
-          ]),
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-secondary ",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.editting = false
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "button" },
+                    on: { click: _vm.update }
+                  },
+                  [_vm._v("Update youre reply")]
+                )
+              ])
+            : _c("p", {
+                staticClass: "comment-text alert alert-info",
+                domProps: { textContent: _vm._s(_vm.body) }
+              }),
           _vm._v(" "),
-          _c("div", { staticClass: "bottom-comment" }, [
-            _c("div", { staticClass: "comment-date" }, [
-              _c("a", { attrs: { href: "/profiles/" + _vm.data.owner.name } }, [
+          _c(
+            "div",
+            { staticClass: "bottom-comment" },
+            [
+              _c("div", { staticClass: "comment-date" }, [
+                _c(
+                  "a",
+                  { attrs: { href: "/profiles/" + _vm.data.owner.name } },
+                  [
+                    _c("strong", {
+                      staticClass: "text-info font-weight-bold",
+                      domProps: { textContent: _vm._s(_vm.data.owner.name) }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
                 _c("strong", {
-                  staticClass: "text-info font-weight-bold",
-                  domProps: { textContent: _vm._s(_vm.data.owner.name) }
+                  staticClass: "text-muted",
+                  domProps: { textContent: _vm._s(_vm.ago) }
                 })
               ]),
               _vm._v(" "),
-              _c("strong", {
-                staticClass: "text-muted",
-                domProps: { textContent: _vm._s(_vm.ago) }
-              })
-            ]),
-            _vm._v(" "),
-            _vm.canUpdate
-              ? _c("div", [
-                  _c("ul", { staticClass: "comment-actions" }, [
-                    _vm.signedIn
-                      ? _c(
-                          "div",
-                          [
-                            _c("favorite", { attrs: { reply: _vm.data } }),
-                            _vm._v(" "),
+              _vm.canUpdate
+                ? _c("div", [
+                    _c("ul", { staticClass: "comment-actions" }, [
+                      _vm.signedIn
+                        ? _c("div", [
                             _c(
                               "button",
                               {
@@ -65458,14 +65459,16 @@ var render = function() {
                                 )
                               ]
                             )
-                          ],
-                          1
-                        )
-                      : _vm._e()
+                          ])
+                        : _vm._e()
+                    ])
                   ])
-                ])
-              : _vm._e()
-          ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("favorite", { attrs: { reply: _vm.data } })
+            ],
+            1
+          )
         ])
       ])
     ])

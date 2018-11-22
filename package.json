@@ -26,6 +26,7 @@
         "moment": "^2.22.2",
         "particles.js": "^2.0.0",
         "particlesjs": "^2.2.3",
+        "vue-avatar": "^2.1.7",
         "vuesax": "^3.4.4"
     }
 }

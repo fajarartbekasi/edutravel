@@ -10,6 +10,7 @@ use Laravolt\Avatar\Avatar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\ThreadFilters;
+use App\Http\Requests\ThreadReaquest;
 
 class ThreadController extends Controller
 {
@@ -55,22 +56,10 @@ class ThreadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ThreadReaquest $request)
     {
-        $this->validate($request,[
-                'title' => 'required',
-                'channel_id' => 'required|exists:channels,id',
-                'body' => 'required'
-            ]
-        );
 
-        $thread = Thread::create([
-            'user_id'       => auth()->id(),
-            'channel_id'    => request('channel_id'),
-            'title'         => request('title'),
-            'body'          => request('body')
-
-        ]);
+       $thread = Thread::create($request->formThread());
 
         return redirect($thread->path())
                 ->with('flash', 'Your thread has been published!');
@@ -121,8 +110,6 @@ class ThreadController extends Controller
      */
     public function destroy($channel, Thread $thread)
     {
-
-
         $this->authorize('update', $thread);
 
         $thread->delete();
