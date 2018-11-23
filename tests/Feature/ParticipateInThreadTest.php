@@ -114,5 +114,18 @@ class ParticipateInThreadTest extends TestCase
 
         $this->assertDatabaseHas('replies', ['id' => $reply->id, 'body' => $updateReply]);
     }
+     /** @test */
+    function users_may_only_reply_a_maximum_of_once_per_minute()
+    {
+        $this->signIn();
+        $thread = create('App\Models\Thread\Thread');
+        $reply = make('App\Models\Reply\Reply');
+
+        $this->post($thread->path(). '/replies', $reply->toArray())
+             ->assertStatus(200);
+
+        $this->post($thread->path(). '/replies', $reply->toArray())
+             ->assertStatus(429);
+    }
 
 }

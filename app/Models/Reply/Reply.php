@@ -2,6 +2,7 @@
 
 namespace App\Models\Reply;
 
+use Carbon\Carbon;
 use App\FavoriteTable;
 use Illuminate\Database\Eloquent\Model;
 use App\RecordsActivity;
@@ -10,7 +11,7 @@ class Reply extends Model
 {
 
     use FavoriteTable, RecordsActivity;
-    
+
     protected $guarded = [];
 
     protected $with = ['owner','favorites'];
@@ -46,5 +47,9 @@ class Reply extends Model
         return $this->thread->path()."#reply-{$this->id}";
     }
 
-    
+    public function wasJustPublished()
+    {
+        return $this->created_at->gt(Carbon::now()->subMinute());
+    }
+
 }

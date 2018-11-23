@@ -51,4 +51,8 @@ class User extends Authenticatable
     {
         return 'name';
     }
+    public function lastReply()
+    {
+        return $this->hasOne(\App\Models\Reply\Reply::class)->latest();
+    }
 }

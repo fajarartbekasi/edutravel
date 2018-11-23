@@ -6,10 +6,12 @@
         <div id="app">
                 @include('partials.nav')
             <main role="main" class="main">
-                @include('partials.notifications.errors')
                 <div id="flash-msg">
                 </div>
                 <flash message="{{ session('flash') }}"></flash>
+                <div class="pt-5">
+                    @include('partials.notifications.errors')
+                </div>
                 @yield('content')
             </main>
                 @include('partials.footer')

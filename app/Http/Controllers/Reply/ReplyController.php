@@ -8,6 +8,7 @@ use App\Models\Thread\Thread;
 use App\Models\Reply\Reply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ReplyController extends Controller
 {
@@ -33,13 +34,17 @@ class ReplyController extends Controller
 
     public function store($channelId, Thread $thread)
     {
+        if(Gate::denies('create', new Reply)){
+            return response(
 
+                'You are posting too frequently. Please take a break. :)', 429
+            );
 
+        }
         $this->validate(request(), [
 
             'body' => 'required'
         ]);
-
         $reply = $thread->addReply([
             'body' => request('body'),
             'user_id' => auth()->id()
