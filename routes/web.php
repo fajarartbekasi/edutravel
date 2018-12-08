@@ -7,51 +7,122 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('threads', 'Thread\ThreadController@index');
+/**
+ * route for call page channel create
+ * if credential not verified cann't create channel
+ * and if credential not authenticated cann't create channel
+ */
+Route::group(['prefix' => 'channels', 'middleware' => ['auth','verified']], function(){
+    /**
+     * call page create channel
+     */
+    Route::get('/', 'Channel\ChannelController@create')->name('channels.create');
+    /**
+     * route for store the data channel to database
+     */
+    Route::post('/store', 'Channel\ChannelController@store')->name('channels.store');
 
-Route::get('threads/create', 'Thread\ThreadController@create');
+});
 
-Route::get('threads/{channel}/{thread}', 'Thread\ThreadController@show');
+/**
+ * route group for call all threads
+ * if credential not verified cann't create thread
+ * if credential not authenticated cann't create thread
+ */
+Route::group(['prefix' => 'threads'], function(){
+    /**
+     * call page index all threads data for all users.
+     */
+    Route::get('/', 'Thread\ThreadController@index')->name('threads.index');
+    /**
+     * call page create form thread.
+     */
+    Route::get('/create', 'Thread\ThreadController@create')->name('threads.create');
+    /**
+     * call page show thread.
+     */
+    Route::get('/{channel}/{thread}', 'Thread\ThreadController@show')->name('threads.show');
+    /**
+     * call function destroyed thread.
+     */
+    Route::delete('/{channel}/{thread}', 'Thread\ThreadController@destroy')->name('threads.destroy');
+    /**
+     * call function store the data new thread to database.
+     */
+    Route::post('', 'Thread\ThreadController@store')->name('threads.store');
+    /**
+     * call page threads form channel.
+     */
+    Route::get('/{channel}', 'Thread\ThreadController@index');
+    /**
+     * get reply per thread.
+     */
+    Route::get('/{channel}/{thread}/replies', 'Reply\ReplyController@index');
+    /**
+     * call function store new reply thread to database.
+     */
+    Route::post('/{channel}/{thread}/replies', 'Reply\ReplyController@store');
+    /**
+     * call function subscriptions thread.
+     */
+    Route::post('/{channel}/{thread}/subscriptions','Thread\ThreadSubscriptionsController@store')->middleware('auth');
+    /**
+     * destroy subscriptions thread.
+     */
+    Route::delete('/{channel}/{thread}/subscriptions','Thread\ThreadSubscriptionsController@destroy')->middleware('auth');
 
-Route::delete('threads/{channel}/{thread}', 'Thread\ThreadController@destroy');
 
-Route::post('threads', 'Thread\ThreadController@store');
+});
 
-Route::get('threads/{channel}', 'Thread\ThreadController@index');
+/**
+ * route group replies
+ * if credential not verified cann't destroy repy.
+ * if credential not verified cann't favorite reply.
+ * if credential not verified cann't destroy favorite reply.
+ */
+Route::group(['prefix'=>'replies'], function(){
+    /**
+     * call function destroy reply.
+     */
+    Route::delete('/{reply}', 'Reply\ReplyController@destroy');
+    /**
+     * call function store favorite reply to database.
+     */
+    Route::post('/{reply}/favorites', 'Favorite\FavoriteController@store');
+    /**
+     * call function destroy favorite reply.
+     */
+    Route::delete('/{reply}/favorites', 'Favorite\FavoriteController@destroy');
 
-Route::get('/threads/{channel}/{thread}/replies', 'Reply\ReplyController@index');
+     /**
+     * call function update teply thread.
+     */
+    Route::patch('/{reply}', 'Reply\ReplyController@update');
+});
 
-Route::post('/threads/{channel}/{thread}/replies', 'Reply\ReplyController@store');
+/**
+ * route group profiles
+ * if credential unauthenticated cann't show profile.
+ */
+Route::group(['prefix' => 'profiles', 'middleware' => 'auth'], function(){
+    /**
+     * call function show profiles.
+     */
+    Route::get('/{user}', 'Profile\ProfileController@show')->name('profile');
+    /**
+     * get notification on profile page.
+     */
+    Route::get('/{user}/notifications', 'Profile\UserNotificationsController@index');
+    /**
+     * call function destroy notification on profile page.
+     */
+    Route::delete('/{user}/notifications/{notification}', 'Profile\UserNotificationsController@destroy');
 
-Route::patch('/replies/{reply}', 'Reply\ReplyController@update');
-
-Route::delete('/replies/{reply}', 'Reply\ReplyController@destroy');
-
-Route::post('/threads/{channel}/{thread}/subscriptions','Thread\ThreadSubscriptionsController@store')->middleware('auth');
-
-Route::delete('/threads/{channel}/{thread}/subscriptions','Thread\ThreadSubscriptionsController@destroy')->middleware('auth');
-
-Route::post('/replies/{reply}/favorites', 'Favorite\FavoriteController@store');
-
-Route::delete('/replies/{reply}/favorites', 'Favorite\FavoriteController@destroy');
-
-
-
-Route::get('/profiles/{user}', 'Profile\ProfileController@show')->name('profile');
-
-Route::get('/profiles/{user}/notifications', 'Profile\UserNotificationsController@index');
-
-Route::delete('/profiles/{user}/notifications/{notification}', 'Profile\UserNotificationsController@destroy');
-
-
-Route::get('/channels', 'Channel\ChannelController@create');
-Route::post('/channels/store', 'Channel\ChannelController@store');
-
-
+});
 
 Route::get('/events', 'Event\EventController@index');
 
