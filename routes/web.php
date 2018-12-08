@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@show');
+Route::get('/home', 'HomeController@index');
 
 Route::get('threads', 'Thread\ThreadController@index');
 

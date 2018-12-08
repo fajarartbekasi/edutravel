@@ -9,12 +9,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-    public function index(User $user)
+    public function index()
     {
-        return view('home',[
-            'profileUser' => $user,
-             'activities'     => Activity::feed($user)
-        ]);
+        return view('welcome');
     }
     public function show(User $user)
    {
