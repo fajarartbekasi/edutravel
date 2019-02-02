@@ -3,19 +3,20 @@
 use App\Models\Thread\Thread;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 /**
  * route for call page channel create
  * if credential not verified cann't create channel
  * and if credential not authenticated cann't create channel
  */
+
 Route::group(['prefix' => 'channels', 'middleware' => ['auth','verified']], function(){
     /**
      * call page create channel
@@ -33,6 +34,7 @@ Route::group(['prefix' => 'channels', 'middleware' => ['auth','verified']], func
  * if credential not verified cann't create thread
  * if credential not authenticated cann't create thread
  */
+    
 Route::group(['prefix' => 'threads'], function(){
     /**
      * call page index all threads data for all users.

@@ -6,13 +6,14 @@ use App\Channel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChannelRequest;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 
 class ChannelController extends Controller
 {
 
     public function __construct()
     {
-        return $this->middleware('auth');
+        return $this->middleware('verified');
     }
 
     public function create()

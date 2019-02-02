@@ -9,12 +9,13 @@ use App\Models\Reply\Reply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 
 class ReplyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'index']);
+        $this->middleware('verified', ['except' => 'index']);
     }
 
     /**

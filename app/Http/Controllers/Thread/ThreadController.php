@@ -11,12 +11,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\ThreadFilters;
 use App\Http\Requests\ThreadReaquest;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 
 class ThreadController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('auth')->except(['index','show']);
+        return $this->middleware('verified')->except(['index','show']);
     }
     /**
      * Display a listing of the resource.
