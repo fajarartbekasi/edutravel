@@ -14,7 +14,7 @@ class FavoritesTest extends TestCase
    {
        $this->withExceptionHandling()
            ->post('replies/1/favorites')
-           ->assertRedirect('/login');
+           ->assertStatus(404);
    }
     /** @test */
     public function an_authenticated_user_can_favorite_any_replies()

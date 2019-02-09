@@ -12,6 +12,16 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@index');
 
 /**
+ * Route for new ui
+ * 
+ */
+Route::group(['prefix' => 'refactoring-ui'], function(){
+
+    Route::get('/threads','RedesignController@index');
+
+});
+
+/**
  * route for call page channel create
  * if credential not verified cann't create channel
  * and if credential not authenticated cann't create channel

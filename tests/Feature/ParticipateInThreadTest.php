@@ -19,16 +19,8 @@ class ParticipateInThreadTest extends TestCase
 
         $reply = make('App\Models\Reply\Reply');
 
-        // dd($thread->path() . '/replies', $reply->toArray());
-
         $this->post($thread->path() . '/replies', $reply->toArray())
-            ->assertRedirect('/login');
-
-
-        // $this->withExceptionHandling()
-        //     ->post('/threads/some/1/replies', [])
-        //     ->assertRedirect('/login');
-
+            ->assertRedirect('/email/verify');
     }
     /** @test */
     function an_authenticated_user_may_participate_in_forum_threads()
@@ -66,7 +58,7 @@ class ParticipateInThreadTest extends TestCase
         $reply = create('App\Models\Reply\Reply');
 
         $this->delete("/replies/{$reply->id}")
-             ->assertRedirect('login');
+             ->assertRedirect('/email/verify');
 
         $this->signIn()
              ->delete("/replies/{$reply->id}")
@@ -94,7 +86,7 @@ class ParticipateInThreadTest extends TestCase
         $reply = create('App\Models\Reply\Reply');
 
         $this->patch("/replies/{$reply->id}")
-            ->assertRedirect('login');
+            ->assertRedirect('/email/verify');
 
         $this->signIn()
             ->patch("/replies/{$reply->id}")
@@ -122,7 +114,7 @@ class ParticipateInThreadTest extends TestCase
         $reply = make('App\Models\Reply\Reply');
 
         $this->post($thread->path(). '/replies', $reply->toArray())
-             ->assertStatus(200);
+             ->assertStatus(302);
 
         $this->post($thread->path(). '/replies', $reply->toArray())
              ->assertStatus(429);

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 
 
 class CreateThreadTest extends TestCase
@@ -15,9 +16,10 @@ class CreateThreadTest extends TestCase
     {
         $this->withExceptionHandling();
         $this->get('/threads/create')
-             ->assertRedirect('/login');
+             ->assertRedirect('/email/verify');
+
         $this->post('/threads')
-             ->assertRedirect('/login');
+             ->assertRedirect('/email/verify');
     }
 
     /** @test */
@@ -37,7 +39,7 @@ class CreateThreadTest extends TestCase
     /** @test */
     function a_thread_require_a_title()
     {
-        $this->publishThread(['title'=>null])
+        $this->publishThread(['title' => null])
              ->assertSessionHasErrors('title');
     }
     /** @test */
@@ -47,7 +49,7 @@ class CreateThreadTest extends TestCase
 
         $thread = create('App\Models\Thread\Thread');
 
-        $this->delete($thread->path())->assertRedirect('/login');
+        $this->delete($thread->path())->assertRedirect('/email/verify');
 
         $this->signIn();
 
@@ -76,25 +78,38 @@ class CreateThreadTest extends TestCase
     }
 
     /** @test */
-    function a_thread_require_a_channel_id()
+    function unverified_user_email_cannot_create_thread()
     {
+       $regulerUser = $this->createUser();
 
-        factory('App\Channel', 2)->create();
+       $this->signIn($regulerUser);
 
-        $this->publishThread(['channel_id' => null])
-            ->assertSessionHasErrors('channel_id');
+       $this->get(route('threads.create'))
+            ->assertStatus(302)
+            ->assertRedirect('/email/verify');
 
-        $this->publishThread(['channel_id' => 999])
-            ->assertSessionHasErrors('channel_id');
-
-
+        $this->post(route('threads.store'))
+            ->assertStatus(302)
+            ->assertRedirect('/email/verify');
 
     }
+
     /** @test */
     function a_thread_require_a_body()
     {
         $this->publishThread(['body' => null])
             ->assertSessionHasErrors('body');
+    }
+    /** @test */
+    function a_thread_require_a_channel_id()
+    {
+        
+        factory('App\Channel', 2)->create();
+
+        $this->publishThread(['channel_id' => null])
+            ->assertSessionHasErrors('channel_id');
+
+
     }
 
     public function publishThread($overrides = [])
@@ -104,7 +119,8 @@ class CreateThreadTest extends TestCase
 
         $thread = make('App\Models\Thread\Thread', $overrides);
 
-        return $this->post('/threads', $thread->toArray());
+        return $this->post(route('threads.store', $thread->toArray()));
+       
 
     }
 }

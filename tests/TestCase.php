@@ -19,7 +19,14 @@ abstract class TestCase extends BaseTestCase
  
     protected function signIn($user = null)
     {
-        $user = $user ?: create('App\User');
+        // $user = $user ?: create('App\User');
+
+        $user = $user ?: factory(\App\User::class)->create([
+            'name'          => 'Chaerul Fajar Subhi',
+            'email'         => 'fajarbekasieditting@gmail.com',
+            'password'      => bcrypt('password'),
+            'email_verified_at' => '2019-02-02 11:08:00',
+        ]);
 
         $this->actingAs($user);
 
@@ -47,6 +54,16 @@ abstract class TestCase extends BaseTestCase
     {
         $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
         return $this;
+    }
+    
+    protected function createUser()
+    {
+        return factory(\App\User::class)->create([
+            'name'      => 'User Name Tes',
+            'email'     => 'user@test.com',
+            'password'  => bcrypt('password'),
+            'email_verified_at' => null,
+        ]);
     }
    
 }
