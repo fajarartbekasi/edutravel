@@ -38,8 +38,10 @@ class ReplyController extends Controller
         if(Gate::denies('create', new Reply)){
             return response(
 
-                'You are posting too frequently. Please take a break. :)', 429
+                ['status'=>'You are posting too frequently. Please take a break. :)'],
+                429
             );
+
 
         }
         $this->validate(request(), [

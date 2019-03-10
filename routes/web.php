@@ -13,11 +13,18 @@ Route::get('/', 'HomeController@index');
 
 /**
  * Route for new ui
- * 
+ *
  */
 Route::group(['prefix' => 'refactoring-ui'], function(){
 
     Route::get('/threads','RedesignController@index');
+    Route::get('/threads-show','RedesignController@showthread');
+    Route::get('/create-threads','RedesignController@createthread');
+
+
+
+    Route::get('/events','RedesignController@events');
+    Route::get('/events-show','RedesignController@eventsshow');
 
 });
 
@@ -44,7 +51,7 @@ Route::group(['prefix' => 'channels', 'middleware' => ['auth','verified']], func
  * if credential not verified cann't create thread
  * if credential not authenticated cann't create thread
  */
-    
+
 Route::group(['prefix' => 'threads'], function(){
     /**
      * call page index all threads data for all users.
@@ -136,7 +143,17 @@ Route::group(['prefix' => 'profiles', 'middleware' => 'auth'], function(){
 
 });
 
-Route::get('/events', 'Event\EventController@index');
+Route::group(['prefix' => 'events'], function(){
+
+    Route::get('/create', 'Event\EventController@create')->name('events.create');
+
+});
+
+Route::group(['prefix' => 'joint'], function () {
+
+    Route::get('/event', 'Join\JointEventController@create')->name('joint.event');
+
+});
 
 
 Route::group(['prefix'=>'plans'], function(){

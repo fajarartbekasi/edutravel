@@ -29,7 +29,7 @@ class HomeController extends Controller
            return $threads;
         }
 
-        return view('contents.discussions.index',compact('threads'));
+        return view( 'ui.contents.threads.index',compact('threads'));
 
     }
     public function show(User $user)

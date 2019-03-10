@@ -8,6 +8,7 @@
             <main role="main" class="main">
                 <div id="flash-msg">
                 </div>
+                @include('partials.notifications.errors')
                 <flash message="{{ session('flash') }}"></flash>
                 <div class="pt-5">
                     @include('partials.notifications.errors')

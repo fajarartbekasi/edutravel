@@ -52,6 +52,7 @@
                     flash('Youre reply hasben published now.');
                     this.$emit('created', data);
                 });
+
             }
         }
     }

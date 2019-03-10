@@ -37,7 +37,7 @@ class ThreadController extends Controller
            return $threads;
         }
 
-        return view('contents.discussions.index',compact('threads'));
+        return view( 'ui.contents.threads.index',compact('threads'));
 
     }
 
@@ -76,8 +76,7 @@ class ThreadController extends Controller
     public function show($channel,Thread $thread)
     {
 
-
-        return view('contents.discussions.show',compact('thread'));
+        return view( 'ui.contents.threads.show',compact('thread'));
     }
 
     /**

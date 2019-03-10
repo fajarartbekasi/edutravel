@@ -103,7 +103,7 @@ class CreateThreadTest extends TestCase
     /** @test */
     function a_thread_require_a_channel_id()
     {
-        
+
         factory('App\Channel', 2)->create();
 
         $this->publishThread(['channel_id' => null])
@@ -119,8 +119,8 @@ class CreateThreadTest extends TestCase
 
         $thread = make('App\Models\Thread\Thread', $overrides);
 
-        return $this->post(route('threads.store', $thread->toArray()));
-       
+       return $this->post(route('threads.store', $thread->toArray()));
+
 
     }
 }

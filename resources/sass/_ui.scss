@@ -6,7 +6,369 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
-body{
+html,body{
+overflow-x: hidden;
+}
+body {
+    padding-top: 56px;
     background: #e6ecf0;
+}
+
+@media (max-width: 991.98px) {
+    .offcanvas-collapse {
+        position: fixed;
+        top: 56px;
+        /* Height of navbar */
+        bottom: 0;
+        left: 100%;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        visibility: hidden;
+        background-color: #343a40;
+        transition-timing-function: ease-in-out;
+        transition-duration: .3s;
+        transition-property: left, visibility;
+    }
+
+    .offcanvas-collapse.open {
+        left: 0;
+        visibility: visible;
+    }
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    color: rgba(255, 255, 255, .75);
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: .875rem;
+    color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+    color: #f8bbd0;
+}
+
+.nav-underline .active {
+    font-weight: 500;
+    color: #f06292;
+    outline: 1px;
+    outline-color: #f06292;
+}
+
+.text-white-50 {
+    color: rgba(255, 255, 255, .5);
+}
+
+.bg-purple {
+    background-color: #6f42c1;
+}
+
+.lh-100 {
+    line-height: 1;
+}
+
+.lh-125 {
+    line-height: 1.25;
+}
+
+.lh-150 {
+    line-height: 1.5;
+}
+.page-header {
+    background-color: #ffffff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.btnThread{
+    color: #17a2b8;
+    font-weight: 700;
+    background-color: #e9fafc;
+    border-radius: 2rem;
+}
+.btnChannel {
+    color: #17a2b8;
+    font-weight: 700;
+    background-color: #e9fafc;
+    border-color: black;
+    border-radius: 2rem;
+}
+
+.icon-pen:before {
+    content: "\e908";
+}
+.mt-3,
+.my-3 {
+    margin-top: 1rem !important;
+}
+.mb-3,
+.my-3 {
+    margin-bottom: 1rem !important;
+}
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+.pr-2,
+.px-2 {
+    padding-right: .5rem !important;
+}
+.rounded-2 {
+    border-radius: .75rem;
+}
+.bg-light-header {
+    background-color: #182334;
+    color: #fff;
+}
+.bg-light-comment {
+    background-color: #e3f2fd;
+    color: #fff;
+}
+.body-content {
+    overflow-wrap: break-word;
+}
+.media-body {
+    flex: 1;
+}
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+.rounded-1 {
+    border-radius: .5rem;
+}
+.body-content img {
+    max-width: 100%;
+}
+.absolute {
+    position: absolute;
+}
+.mt-2,
+.my-2 {
+    margin-top: .5rem !important;
+}
+.align-self-start {
+    align-self: flex-start !important;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.border-white {
+    border-color: #fff !important;
+}
+.bg-white {
+    background-color: #fff !important;
+}
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #404b5e;
+    border: 1px solid #404b5e;
+    border-radius: .25rem;
+}
+.img-fluid,
+.img-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+img,
+svg {
+    vertical-align: middle;
+}
+.btn-sm,
+.btn-group-sm>.btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7875rem;
+    line-height: 1.5;
+    border-radius: 3.25rem;
+}
+/********************* Event cart **********************/
+.event-image .pic-1,
+.event-image .pic-2 {
+    backface-visibility: hidden;
+    transition: all .5s ease 0s
+}
+
+.event-grid {
+    font-family: Poppins, sans-serif;
+    position: relative
+}
+
+.event-grid .event-image {
+    overflow: hidden;
+    position: relative
+}
+
+.event-grid .event-image a {
+    display: block
+}
+
+.event-grid .event-image img {
+    width: 100%;
+    height: auto
+}
+
+.event-image .pic-1 {
+    opacity: 1
+}
+
+.event-grid:hover .event-image .pic-1 {
+    opacity: 0
+}
+
+.event-image .pic-2 {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.event-grid:hover .event-image .pic-2 {
+    opacity: 1
+}
+
+.event-grid .social {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px
+}
+
+.event-grid .social li {
+    display: block;
+    margin: 0 0 10px;
+    transition: all .5s
+}
+
+.event-grid .social li:nth-child(2) {
+    opacity: 0;
+    transform: translateY(-50px)
+}
+
+.event-grid:hover .social li:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.event-grid .social li:nth-child(3) {
+    opacity: 0;
+    transform: translateY(-50px)
+}
+
+.event-grid:hover .social li:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .2s
+}
+
+.event-grid .social li a {
+    color: #888;
+    background: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: block;
+    transition: .5s ease 0s
+}
+
+.event-grid .social li a:hover {
+    color: #fff;
+    background: #1e3799
+}
+
+.event-grid .select-options {
+    color: #777;
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 15px 5px;
+    margin: 0 auto;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    width: 92%;
+    left: 0;
+    bottom: -100px;
+    right: 0;
+    transition: .5s ease 0s
+}
+
+.event-grid .select-options:hover {
+    color: #fff;
+    background-color: #1e3799;
+    text-decoration: none
+}
+
+.event-grid:hover .select-options {
+    opacity: 1;
+    bottom: 10px
+}
+
+.event-grid .event-content {
+    padding: 20px 10px
+}
+
+.event-grid .title {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+    transition: all .3s ease 0s
+}
+
+.event-grid .title a {
+    color: #222
+}
+
+.event-grid .title a:hover {
+    color: #1e3799
+}
+
+.event-grid .price {
+    color: #6c757d;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px
+}
+
+@media only screen and (max-width:990px) {
+    .event-grid {
+        margin-bottom: 30px
+    }
 }
