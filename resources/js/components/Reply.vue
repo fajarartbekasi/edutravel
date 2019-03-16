@@ -1,50 +1,53 @@
 <template>
-    <div :id="'reply-'+id" >
-        <div class="comment pt-3">
-            <div class="comment-wrap">
-                <div class="photo">
-                    <img src="/../../img/318585.png"
-                        class="media-object rounded-circle ml-3 mr-3 mb-3" height="30" width="30">
-                </div>
-
-                    <div class="comment-block">
-                        <div v-if="editting">
-                            <div class="form-group">
-                            <textarea name="" id="" class="form-control alert alert-danger" v-model="body">
-                            </textarea>
-                        </div>
-                        <button type="button" class="btn btn-outline-secondary " @click="editting = false">Cancel</button>
-                        <button type="button" class="btn btn-outline-info" @click="update">Update youre reply</button>
-                    </div>
-                    <p class="comment-text alert alert-info" v-else v-text="body">
-
-                    </p>
-
-                <div class="bottom-comment">
-                    <div class="comment-date">
-                        <a :href="'/profiles/'+data.owner.name" >
-                            <strong class="text-info font-weight-bold" v-text="data.owner.name"> </strong>
-                        </a>
-                        <strong class="text-muted" v-text="ago" ></strong>
-                    </div>
-                    <div v-if="canUpdate">
-                        <ul class="comment-actions">
-                            <div v-if="signedIn">
-                                <button class="btn btn-outline-info btn-sm complain"  @click="editting = true">
-                                    <span class="fa fa-pencil fa fa-1x "> Edit reply</span>
-                                </button>
-                                <button type="button" class="btn btn-outline-danger btn-sm reply" @click="destroy">
-                                    <span class="fa fa-trash fa fa-1x "> Deleted reply</span>
-                                </button>
-                            </div>
-                        </ul>
-                    </div>
+  <div :id="'reply-'+id" >
+     <div id="comment-1">
+        <div class="media mb-3">
+           <div class="pr-2 mr-1">
+              <img src="/../../img/318585.png"
+                   alt="Chaerul Fajar Subhi"
+                   width="45"
+                   height="45"
+                   class="align-self-start mt-2 rounded-circle img-thumbnail bg-white border-white absolute">
+           </div>
+           <div class="media-body bg-light-header pl-3 pt-3 pr-3 ml-3 rounded-2 body-content">
+              <div v-if="editting">
+                 <div class="form-group">
+                    <textarea name="" id="" class="form-control alert alert-danger" v-model="body">
+                    </textarea>
+                 </div>
+                 <button type="button" class="btn btn-outline-secondary " @click="editting = false">Cancel</button>
+                 <button type="button" class="btn btn-outline-info" @click="update">Update youre reply</button>
+              </div>
+              <h5 class="pl-2 mr-5" v-else v-text="body"></h5>
+              <div class="mb-3 ml-2">
+                 <span class="text-info" v-text="data.owner.name"></span>
+                    Published
+                 <span v-text="ago"></span>
+                 <div class="float-right media ">
                     <favorite :reply="data" > </favorite>
-                </div>
-                </div>
-            </div>
+                       <div v-if="canUpdate">
+                          <div v-if="signedIn">
+                              <button class="btn btn-outline-warning btn-sm ml-2 mr-2"
+                                      title="What wrong men with me"
+                                      @click="editting = true"
+                                      >
+                                      <span class="fa fa-pencil"></span>
+                              </button>
+                              <button type="button"
+                                      class="btn btn-outline-danger btn-sm"
+                                      title="are you sure send me go to trash :("
+                                      @click="destroy"
+                                      >
+                                      <span class="fa fa-trash"></span>
+                              </button>
+                          </div>
+                       </div>
+                 </div>
+              </div>
+           </div>
         </div>
-    </div>
+     </div>
+  </div>
 </template>
 
 <script>

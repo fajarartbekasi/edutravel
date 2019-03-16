@@ -1,6 +1,6 @@
 <template>
-    <button type="submit" :class="classes" @click="toggle">
-        <span class="fa fa-heart fa fa-1x mr-3"> Favorite</span>
+    <button type="submit" :class="classes" @click="toggle" title="can you give me favorite comment please">
+        <span class="fa fa-heart fa fa-1x mr-3" ></span>
         <span v-text="count"></span>
     </button>
 </template>

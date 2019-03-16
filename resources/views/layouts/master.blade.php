@@ -3,15 +3,19 @@
     @include('layouts.components.ui.head')
 </head>
 
-<body>
+<body class="main">
     <div id="app">
         @include('layouts.components.ui.header')
         @include('partials.ui.part.pageheader')
         @include('partials.ui.part.scroll')
+
         <div class="container">
-            <div class="row mt-5">
+            <div class="row">
                 @yield('leftmenu')
-                <main class="col-md-9" role="main">
+                <main class="col-md-8 mas" role="main">
+                    <div id="flash-msg"></div>
+                    @include('partials.notifications.errors')
+                    <flash message="{{ session('flash') }}"></flash>
                     @yield('content')
                 </main>
                     @yield('rightbutton')
@@ -19,6 +23,7 @@
         </div>
 
     </div>
+    @include('partials.footer')
     @include('layouts.components.script')
 </body>
 

@@ -6,7 +6,7 @@
         props: ['active'],
         computed: {
             classes() {
-                return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3' : 'btn-outline-secondary btn-sm mr-3'];
+                return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3 pt-2' : 'btn-outline-secondary btn-sm mr-3 pt-2'];
             }
         },
         methods: {

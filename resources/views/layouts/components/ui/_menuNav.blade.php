@@ -6,9 +6,7 @@
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase text-muted" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    What Youre Choise
-                    <img src="https://secure.gravatar.com/avatar/9465c78eee69cad31814f188cd40901e?s=60&amp;d=identicon"
-                        alt="ChaerulSubhi"
+                    <img src="/../../img/318585.png"
                         class="img-responsive rounded-circle"
                         width="25"
                         height="25">
@@ -25,7 +23,12 @@
                     <a href="/threads" class="dropdown-item">Threads</a>
                     <a href="/channels" class="dropdown-item">Channels</a>
                     <a href="" class="dropdown-item">Events</a>
-                    <logout-button route="">Sign Out</logout-button>
+                    <a href="{{ route('logout') }}" class="dropdown-item fa fa-sign-out text-muted" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Sign Out
+                                        </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </div>
             </li>
         </ul>

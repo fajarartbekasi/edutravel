@@ -64000,13 +64000,14 @@ var render = function() {
     "button",
     {
       class: _vm.classes,
-      attrs: { type: "submit" },
+      attrs: {
+        type: "submit",
+        title: "can you give me favorite comment please"
+      },
       on: { click: _vm.toggle }
     },
     [
-      _c("span", { staticClass: "fa fa-heart fa fa-1x mr-3" }, [
-        _vm._v(" Favorite")
-      ]),
+      _c("span", { staticClass: "fa fa-heart fa fa-1x mr-3" }),
       _vm._v(" "),
       _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
     ]
@@ -64585,6 +64586,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -64621,75 +64625,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.signedIn
-    ? _c("div", [
-        _c("div", { staticClass: "comment-wrap" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "comment-block" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.body,
-                  expression: "body"
-                }
-              ],
-              attrs: {
-                name: "",
-                id: "",
-                cols: "100",
-                rows: "3",
-                placeholder: "You all will listen to answer....",
-                required: ""
-              },
-              domProps: { value: _vm.body },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+  return _c("div", { staticClass: "mt-3" }, [
+    _c("div", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "media-body bg-light-comment pl-3 pt-2 pr-3 ml-3 rounded-2 mb-3"
+        },
+        [
+          _c("div", { staticClass: "ml-3 mt-2 mb-3 rounded-2 bg-white mb-3" }, [
+            _c("div", { staticClass: "p-3" }, [
+              _c("div", { staticClass: "form-group mb-3" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.body,
+                      expression: "body"
+                    }
+                  ],
+                  staticClass: "form-control pl-0 border-0 mb-2",
+                  staticStyle: {
+                    resize: "none",
+                    overflow: "hidden",
+                    height: "61px"
+                  },
+                  attrs: {
+                    id: "body",
+                    name: "body",
+                    placeholder: "You all will listen to answer...."
+                  },
+                  domProps: { value: _vm.body },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.body = $event.target.value
+                    }
                   }
-                  _vm.body = $event.target.value
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "float-right" }, [
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
           _c(
             "button",
             {
-              staticClass: "btn btn-outline-primary",
-              attrs: { type: "submit" },
+              staticClass: "btn btn-outline-primary mb-3 ml-3",
               on: { click: _vm.addReply }
             },
-            [_vm._v("\n            Post Your Reply\n        ")]
+            [_vm._v("\n                    Post youre reply\n                ")]
           )
-        ])
-      ])
-    : _c("div", [_vm._m(1)])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
-      _c("img", {
-        staticClass: "media-object rounded-circle ml-3 mr-3 mb-3",
-        attrs: { src: "/../../img/318585.png", height: "30", width: "30" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "float-left" }, [
-      _c("a", { attrs: { href: "/login" } }, [_vm._v("Please sign in")]),
-      _vm._v("\n        to participate in this discussion.\n    ")
+    return _c("div", { staticClass: "media mb-3" }, [
+      _c("div", { staticClass: "pr-2 mr-2" }, [
+        _c("img", {
+          staticClass:
+            "align-self-start mt-2 rounded-circle img-thumbnail bg-white border-white absolute",
+          attrs: {
+            src: "/../../img/318585.png",
+            alt: "",
+            width: "45",
+            height: "45"
+          }
+        })
+      ])
     ])
   }
 ]
@@ -64967,6 +64981,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Favorite_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Favorite_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+//
+//
+//
 //
 //
 //
@@ -65337,140 +65354,127 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "reply-" + _vm.id } }, [
-    _c("div", { staticClass: "comment pt-3" }, [
-      _c("div", { staticClass: "comment-wrap" }, [
+    _c("div", { attrs: { id: "comment-1" } }, [
+      _c("div", { staticClass: "media mb-3" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "comment-block" }, [
-          _vm.editting
-            ? _c("div", [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.body,
-                        expression: "body"
-                      }
-                    ],
-                    staticClass: "form-control alert alert-danger",
-                    attrs: { name: "", id: "" },
-                    domProps: { value: _vm.body },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+        _c(
+          "div",
+          {
+            staticClass:
+              "media-body bg-light-header pl-3 pt-3 pr-3 ml-3 rounded-2 body-content"
+          },
+          [
+            _vm.editting
+              ? _c("div", [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.body,
+                          expression: "body"
                         }
-                        _vm.body = $event.target.value
+                      ],
+                      staticClass: "form-control alert alert-danger",
+                      attrs: { name: "", id: "" },
+                      domProps: { value: _vm.body },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.body = $event.target.value
+                        }
                       }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-secondary ",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.editting = false
-                      }
-                    }
-                  },
-                  [_vm._v("Cancel")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-info",
-                    attrs: { type: "button" },
-                    on: { click: _vm.update }
-                  },
-                  [_vm._v("Update youre reply")]
-                )
-              ])
-            : _c("p", {
-                staticClass: "comment-text alert alert-info",
-                domProps: { textContent: _vm._s(_vm.body) }
-              }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "bottom-comment" },
-            [
-              _c("div", { staticClass: "comment-date" }, [
-                _c(
-                  "a",
-                  { attrs: { href: "/profiles/" + _vm.data.owner.name } },
-                  [
-                    _c("strong", {
-                      staticClass: "text-info font-weight-bold",
-                      domProps: { textContent: _vm._s(_vm.data.owner.name) }
                     })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("strong", {
-                  staticClass: "text-muted",
-                  domProps: { textContent: _vm._s(_vm.ago) }
-                })
-              ]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-secondary ",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.editting = false
+                        }
+                      }
+                    },
+                    [_vm._v("Cancel")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-info",
+                      attrs: { type: "button" },
+                      on: { click: _vm.update }
+                    },
+                    [_vm._v("Update youre reply")]
+                  )
+                ])
+              : _c("h5", {
+                  staticClass: "pl-2 mr-5",
+                  domProps: { textContent: _vm._s(_vm.body) }
+                }),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3 ml-2" }, [
+              _c("span", {
+                staticClass: "text-info",
+                domProps: { textContent: _vm._s(_vm.data.owner.name) }
+              }),
+              _vm._v("\n                  Published\n               "),
+              _c("span", { domProps: { textContent: _vm._s(_vm.ago) } }),
               _vm._v(" "),
-              _vm.canUpdate
-                ? _c("div", [
-                    _c("ul", { staticClass: "comment-actions" }, [
-                      _vm.signedIn
-                        ? _c("div", [
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "btn btn-outline-info btn-sm complain",
-                                on: {
-                                  click: function($event) {
-                                    _vm.editting = true
+              _c(
+                "div",
+                { staticClass: "float-right media " },
+                [
+                  _c("favorite", { attrs: { reply: _vm.data } }),
+                  _vm._v(" "),
+                  _vm.canUpdate
+                    ? _c("div", [
+                        _vm.signedIn
+                          ? _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-outline-warning btn-sm ml-2 mr-2",
+                                  attrs: { title: "What wrong men with me" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.editting = true
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "fa fa-pencil fa fa-1x " },
-                                  [_vm._v(" Edit reply")]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "btn btn-outline-danger btn-sm reply",
-                                attrs: { type: "button" },
-                                on: { click: _vm.destroy }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "fa fa-trash fa fa-1x " },
-                                  [_vm._v(" Deleted reply")]
-                                )
-                              ]
-                            )
-                          ])
-                        : _vm._e()
-                    ])
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("favorite", { attrs: { reply: _vm.data } })
-            ],
-            1
-          )
-        ])
+                                },
+                                [_c("span", { staticClass: "fa fa-pencil" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-outline-danger btn-sm",
+                                  attrs: {
+                                    type: "button",
+                                    title: "are you sure send me go to trash :("
+                                  },
+                                  on: { click: _vm.destroy }
+                                },
+                                [_c("span", { staticClass: "fa fa-trash" })]
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    : _vm._e()
+                ],
+                1
+              )
+            ])
+          ]
+        )
       ])
     ])
   ])
@@ -65480,10 +65484,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photo" }, [
+    return _c("div", { staticClass: "pr-2 mr-1" }, [
       _c("img", {
-        staticClass: "media-object rounded-circle ml-3 mr-3 mb-3",
-        attrs: { src: "/../../img/318585.png", height: "30", width: "30" }
+        staticClass:
+          "align-self-start mt-2 rounded-circle img-thumbnail bg-white border-white absolute",
+        attrs: {
+          src: "/../../img/318585.png",
+          alt: "Chaerul Fajar Subhi",
+          width: "45",
+          height: "45"
+        }
       })
     ])
   }
@@ -65591,7 +65601,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['active'],
     computed: {
         classes: function classes() {
-            return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3' : 'btn-outline-secondary btn-sm mr-3'];
+            return ['btn', this.active ? 'btn-outline-primary btn-sm mr-3 pt-2' : 'btn-outline-secondary btn-sm mr-3 pt-2'];
         }
     },
     methods: {
