@@ -14,8 +14,9 @@
                 <div class="dropdown-menu dropdown-menu-right border-0 rounded-bottom-1 shadow" aria-labelledby="navbarDropdown">
 
                     <div class="dropdown-header pb-0">
-                        <h6>Signed in as</h6>
-                        <h6 class="text-dark font-weight-bold">ChaerulSubhi</h6>
+                        <h6 class="text-dark font-weight-bold">
+                            {{Auth::user()->name}}
+                        </h6>
                     </div>
                     <div class="dropdown-divider"></div>
                     <a href="" class="dropdown-item">Profile</a>
@@ -24,8 +25,8 @@
                     <a href="/channels" class="dropdown-item">Channels</a>
                     <a href="" class="dropdown-item">Events</a>
                     <a href="{{ route('logout') }}" class="dropdown-item fa fa-sign-out text-muted" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Sign Out
-                                        </a>
+                       Sign Out
+                    </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>

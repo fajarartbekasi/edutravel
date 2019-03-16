@@ -48,7 +48,8 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        return view('partials.form.form');
+        // return view('partials.form.form');
+        return view('ui.contents.threads.create');
     }
 
     /**
